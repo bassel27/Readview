@@ -15,14 +15,13 @@ class Scraping:
         self.driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()), options=chromeOptions
         )  # to create the instance of chrome WebDriver
-        self.driver.set_window_position(-10000, 0)
 
-    def fetchNotion(self):
+    def fetch_notion(self):
         self.driver.get(
             "https://sumptuous-salesman-ca6.notion.site/bf68366a212e45e1ae9bee853867c225?v=85ee9cedeb5a44c994e49033053f593b"
         )
 
-    def getBooks(self):
+    def get_books_elements(self):
         books = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
                 (
@@ -33,7 +32,7 @@ class Scraping:
         )
         return books
 
-    def openBook(self, book):
+    def open_book(self, book):
         book.click()
 
     def getAuthor(self):
@@ -65,7 +64,7 @@ class Scraping:
         except:
             return None
 
-    def closeBook(self):
+    def close_book(self):
         self.driver.execute_script("window.history.go(-1)")
 
     def closeWebDriver(self):
@@ -74,11 +73,11 @@ class Scraping:
 
 # scraping = Scraping()
 # scraping.openWebDriver()
-# scraping.fetchNotion()
-# books = scraping.getBooks()
-# scraping.openBook(books[0])
+# scraping.fetch_notion()
+# books = scraping.get_books_elements()
+# scraping.open_book(books[0])
 
 # scraping.getQuotes() #before
 # scraping.getAuthor()
 # scraping.getTitle()
-# scraping.closeBook()
+# scraping.close_book()
