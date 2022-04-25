@@ -9,15 +9,14 @@ class Book:
         self.author = author
         self.quotes = quotes
 
-    def initialize_csv(csv_file):
-        writerObject = csv.writer(csv_file, lineterminator='\n')
+    def initialize_csv():
+        csv_file = open("Books.csv", "a")
+        writerObject = csv.writer(csv_file, lineterminator="\n")
         writerObject.writerow(["Title", "Author", "Quote"])  # header
 
     def write_quotes_in_csv(self):
         csv_file = open("Books.csv", "a")
-        if os.path.getsize("Books.csv") == 0:
-            Book.initialize_csv(csv_file)
-        writerObject = csv.writer(csv_file, lineterminator='\n')
+        writerObject = csv.writer(csv_file, lineterminator="\n")
         if self.quotes is not None:
             for quote in self.quotes:
                 writerObject.writerow([self.title, self.author, quote])
@@ -36,9 +35,7 @@ class Book:
                 )
             )
             scraping.close_book()
-            
-            if c == 1:
-                break
+
         return books
 
     def fill_csv(books):
@@ -46,6 +43,7 @@ class Book:
             books[c].write_quotes_in_csv()
 
     def initialize_books_from_notion():
+        Book.initialize_csv()
         Book.fill_csv(Book.get_books())
 
     def initialize_book_from_csv():
