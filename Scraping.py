@@ -51,14 +51,14 @@ class Scraping:
     def getQuotes(self):
         try:
             time.sleep(20)
-            quotesElements = WebDriverWait(self.driver, 20).until(
+            quotes_elements = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_all_elements_located(
                     (By.XPATH, '//div[@placeholder="Empty quote"]')
                 )
             )
             quotes = []
-            for quoteElement in quotesElements:
-                quotes.append(quoteElement.text)
+            for quote_element in quotes_elements:
+                quotes.append(quote_element.text)
 
             return quotes
         except:

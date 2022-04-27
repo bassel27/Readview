@@ -1,22 +1,22 @@
 import csv
-import os
+from itertools import tee, zip_longest
 from Scraping import *
-
+from more_itertools import peekable
 
 class Book:
-    def __init__(self, quotes, title, author):
+    def __init__(self, title, author, quotes):
         self.title = title
         self.author = author
         self.quotes = quotes
 
     def get_csv_writer():
-        csv_file = open('Books.csv', 'a')
-        csv_writer = csv.writer(csv_file, lineterminator='\n')
+        csv_file = open("Books.csv", "a")
+        csv_writer = csv.writer(csv_file, lineterminator="\n")
         return csv_writer
 
     def get_csv_reader():
-        csv_file = open('Books.csv', 'r')
-        csv_reader = csv.reader(csv_file)
+        csv_file = open("Books.csv", "r", encoding="utf-8")
+        csv_reader = csv.DictReader(csv_file)
         return csv_reader
 
     def initialize_csv():
@@ -39,7 +39,7 @@ class Book:
             scraping.open_book(bookElement)
             books.append(
                 Book(
-                    scraping.getQuotes(), scraping.getTitle(c + 1), scraping.getAuthor()
+                    scraping.getTitle(c + 1), scraping.getAuthor(), scraping.getQuotes()
                 )
             )
             scraping.close_book()
@@ -54,8 +54,46 @@ class Book:
         Book.initialize_csv()
         Book.fill_csv(Book.get_books())
 
+    def update_csv():
+        # enter csv in write mode to delete existing stuff
+        # make a backup of old csv file
+        pass
+
     def set_books_from_csv():
-        Book.get_csv_reader()
+        csv_reader = Book.get_csv_reader()
+        books = []
+        quotes = []
+        length = 0
+
+        for line in csv_reader:
+            length+=1
+
+        csv_reader = Book.get_csv_reader()
+        csv_reader, csv_reader2 = tee(csv_reader)
+        line1 = next(csv_reader)
+        
+        next(csv_reader2)   # at first, the iterator doesn't point at anything
+        line2=next(csv_reader2)     
+        
+        while True:
+            quotes.append(line1["Quote"])
+            if line1["Title"] != line2["Title"]:
+                books.append(Book(line1["Title"], line1["Author"], list(quotes)))
+                quotes.clear()
+
+            line1= next(csv_reader)
+            try:
+                line2= next(csv_reader2)
+            except:
+                quotes.append(line2["Quote"])   # last quote
+                books.append(Book(line1["Title"], line1["Author"], list(quotes)))
+                break
+
+        for book in books:
+            print(book.title, book.quotes)
+
+        
+        
 
 
-Book.set_books_from_notion()
+Book.set_books_from_csv()
