@@ -1,13 +1,17 @@
 import csv
-from itertools import tee, zip_longest
+from itertools import tee
 from Scraping import *
-from more_itertools import peekable
+
 
 class Book:
+
+    num_books = 0
+
     def __init__(self, title, author, quotes):
         self.title = title
         self.author = author
         self.quotes = quotes
+        Book.num_books += 1
 
     def get_csv_writer():
         csv_file = open("Books.csv", "a")
@@ -66,34 +70,31 @@ class Book:
         length = 0
 
         for line in csv_reader:
-            length+=1
+            length += 1
 
         csv_reader = Book.get_csv_reader()
         csv_reader, csv_reader2 = tee(csv_reader)
         line1 = next(csv_reader)
-        
-        next(csv_reader2)   # at first, the iterator doesn't point at anything
-        line2=next(csv_reader2)     
-        
+
+        next(csv_reader2)  # at first, the iterator doesn't point at anything
+        line2 = next(csv_reader2)
+
         while True:
             quotes.append(line1["Quote"])
             if line1["Title"] != line2["Title"]:
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 quotes.clear()
 
-            line1= next(csv_reader)
+            line1 = next(csv_reader)
             try:
-                line2= next(csv_reader2)
+                line2 = next(csv_reader2)
             except:
-                quotes.append(line2["Quote"])   # last quote
+                quotes.append(line2["Quote"])  # last quote
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 break
 
         for book in books:
             print(book.title, book.quotes)
-
-        
-        
 
 
 Book.set_books_from_csv()
