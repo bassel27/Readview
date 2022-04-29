@@ -1,6 +1,5 @@
-from itertools import tee, zip_longest
+from itertools import tee
 from Scraping import *
-from more_itertools import peekable
 import CSV
 
 
@@ -67,10 +66,11 @@ class Book:
                 quotes.append(line2["Quote"])  # last quote
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 break
-
+        
+        CSV.reset_csv_reader()
         for book in books:
             print(book.title, book.quotes)
-        CSV.reset_csv_reader()
+        
 
 
 Book.set_books_from_csv()
