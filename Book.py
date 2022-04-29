@@ -1,37 +1,13 @@
-import csv
 from itertools import tee
 from Scraping import *
+import CSV
 
 
 class Book:
-
-    num_books = 0
-
     def __init__(self, title, author, quotes):
         self.title = title
         self.author = author
         self.quotes = quotes
-        Book.num_books += 1
-
-    def get_csv_writer():
-        csv_file = open("Books.csv", "a")
-        csv_writer = csv.writer(csv_file, lineterminator="\n")
-        return csv_writer
-
-    def get_csv_reader():
-        csv_file = open("Books.csv", "r", encoding="utf-8")
-        csv_reader = csv.DictReader(csv_file)
-        return csv_reader
-
-    def initialize_csv():
-        writer_object = Book.get_csv_writer()
-        writer_object.writerow(["Title", "Author", "Quote"])  # header
-
-    def write_quotes_in_csv(self):
-        writer_object = Book.get_csv_writer()
-        if self.quotes is not None:
-            for quote in self.quotes:
-                writer_object.writerow([self.title, self.author, quote])
 
     def get_books():
         scraping = Scraping()
@@ -43,20 +19,19 @@ class Book:
             scraping.open_book(bookElement)
             books.append(
                 Book(
-                    scraping.getTitle(c + 1), scraping.getAuthor(), scraping.getQuotes()
+                    scraping.get_title(c + 1), scraping.get_author(), scraping.getQuotes()
                 )
             )
             scraping.close_book()
-
-        return books
-
-    def fill_csv(books):
-        for c in range(len(books)):
-            books[c].write_quotes_in_csv()
+            
+        return books  # returns a list of books
 
     def set_books_from_notion():
-        Book.initialize_csv()
-        Book.fill_csv(Book.get_books())
+        books = Book.get_books()
+        CSV.initialize_csv()
+        for book in books:
+            for quote in book.quotes:
+                CSV.write_record_in_csv(book.title, book.author, quote)
 
     def update_csv():
         # enter csv in write mode to delete existing stuff
@@ -64,16 +39,15 @@ class Book:
         pass
 
     def set_books_from_csv():
-        csv_reader = Book.get_csv_reader()
         books = []
         quotes = []
         length = 0
 
-        for line in csv_reader:
+        for _ in CSV.csv_reader:  # _ is a general purpose "throwaway" variable name
             length += 1
 
-        csv_reader = Book.get_csv_reader()
-        csv_reader, csv_reader2 = tee(csv_reader)
+        CSV.reset_csv_reader()
+        csv_reader, csv_reader2 = tee(CSV.csv_reader)
         line1 = next(csv_reader)
 
         next(csv_reader2)  # at first, the iterator doesn't point at anything
@@ -92,9 +66,11 @@ class Book:
                 quotes.append(line2["Quote"])  # last quote
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 break
-
+        
+        CSV.reset_csv_reader()
         for book in books:
             print(book.title, book.quotes)
+        
 
 
 Book.set_books_from_csv()
