@@ -1,7 +1,10 @@
 from csv import *
 
-csv_writer = writer(open("Books.csv", "a"), lineterminator="\n")
-csv_reader = DictReader(open("Books.csv", "r", encoding="utf-8"))
+append_file = open("Books.csv", "a")
+read_file  = open("Books.csv", "r", encoding="utf-8")
+
+csv_writer = writer(append_file, lineterminator="\n")
+csv_reader = DictReader(read_file)
 
 
 def initialize_csv():
@@ -13,3 +16,10 @@ def write_record_in_csv(title, author, quote):
 def reset_csv_reader():
     global csv_reader
     csv_reader = DictReader(open("Books.csv", "r", encoding="utf-8"))
+
+def close_file():
+    try:
+        append_file.close()
+        read_file.close()
+    except:
+        pass

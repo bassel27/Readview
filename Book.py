@@ -1,4 +1,5 @@
 from itertools import tee
+
 from Scraping import *
 import CSV
 
@@ -19,11 +20,12 @@ class Book:
             scraping.open_book(bookElement)
             books.append(
                 Book(
-                    scraping.get_title(c + 1), scraping.get_author(), scraping.getQuotes()
+                    scraping.get_title(c + 1),
+                    scraping.get_author(),
+                    scraping.getQuotes(),
                 )
             )
             scraping.close_book()
-            
         return books  # returns a list of books
 
     def set_books_from_notion():
@@ -32,6 +34,7 @@ class Book:
         for book in books:
             for quote in book.quotes:
                 CSV.write_record_in_csv(book.title, book.author, quote)
+        CSV.close_file()
 
     def update_csv():
         # enter csv in write mode to delete existing stuff
@@ -42,23 +45,18 @@ class Book:
         books = []
         quotes = []
         length = 0
-
         for _ in CSV.csv_reader:  # _ is a general purpose "throwaway" variable name
             length += 1
-
         CSV.reset_csv_reader()
         csv_reader, csv_reader2 = tee(CSV.csv_reader)
         line1 = next(csv_reader)
-
         next(csv_reader2)  # at first, the iterator doesn't point at anything
         line2 = next(csv_reader2)
-
         while True:
             quotes.append(line1["Quote"])
             if line1["Title"] != line2["Title"]:
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 quotes.clear()
-
             line1 = next(csv_reader)
             try:
                 line2 = next(csv_reader2)
@@ -66,11 +64,11 @@ class Book:
                 quotes.append(line2["Quote"])  # last quote
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 break
-        
         CSV.reset_csv_reader()
         for book in books:
             print(book.title, book.quotes)
-        
+
+        CSV.close_file()
 
 
 Book.set_books_from_csv()
