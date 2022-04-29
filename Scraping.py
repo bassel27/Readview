@@ -35,14 +35,15 @@ class Scraping:
     def open_book(self, book):
         book.click()
 
-    def getAuthor(self):
+    def get_author(self):
         items = self.driver.find_elements(
             By.XPATH,
             '//div[@style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"]',
         )
         return items[1].text
 
-    def getTitle(self, bookNumber):
+    def get_title(self, bookNumber):
+        time.sleep(20)
         title = self.driver.find_element(
             By.XPATH, '(//div[@placeholder="Untitled"])[' + str(bookNumber) + "]"
         ).text
@@ -50,7 +51,6 @@ class Scraping:
 
     def getQuotes(self):
         try:
-            time.sleep(20)
             quotes_elements = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_all_elements_located(
                     (By.XPATH, '//div[@placeholder="Empty quote"]')
@@ -67,7 +67,7 @@ class Scraping:
     def close_book(self):
         self.driver.execute_script("window.history.go(-1)")
 
-    def closeWebDriver(self):
+    def close_webdriver(self):
         self.driver.quit()
 
 
@@ -78,6 +78,6 @@ class Scraping:
 # scraping.open_book(books[0])
 
 # scraping.getQuotes() #before
-# scraping.getAuthor()
-# scraping.getTitle()
+# scraping.get_author()
+# scraping.get_title()
 # scraping.close_book()
