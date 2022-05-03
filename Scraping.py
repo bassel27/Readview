@@ -17,12 +17,13 @@ class Scraping:
         )  # to create the instance of chrome WebDriver
 
     def fetch_notion(self):
+        # change LINKKKKKKKKKKK
         self.driver.get(
             "https://sumptuous-salesman-ca6.notion.site/bf68366a212e45e1ae9bee853867c225?v=85ee9cedeb5a44c994e49033053f593b"
         )
 
     def get_books_elements(self):
-        books = WebDriverWait(self.driver, 10).until(
+        books = WebDriverWait(self.driver, 20).until(
             EC.presence_of_all_elements_located(
                 (
                     By.XPATH,
@@ -33,7 +34,10 @@ class Scraping:
         return books
 
     def open_book(self, book):
-        book.click()
+        try:
+            book.click()
+        except:
+            self.open_book(book)
 
     def get_author(self):
         items = self.driver.find_elements(

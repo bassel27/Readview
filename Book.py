@@ -1,4 +1,5 @@
 from itertools import tee
+from os import remove
 
 from Scraping import *
 import CSV
@@ -28,12 +29,19 @@ class Book:
             scraping.close_book()
         return books  # returns a list of books
 
+    def remove_weird_characters(quote):
+        quote = quote.encode("ascii", "ignore")   #ignores non-ascii characters
+        quote = quote.decode()
+        return quote
+
     def set_books_from_notion():
         books = Book.get_books()
         CSV.initialize_csv()
         for book in books:
-            for quote in book.quotes:
-                CSV.write_record_in_csv(book.title, book.author, quote)
+            if book.quotes is not None:
+                for quote in book.quotes:
+                    quote = Book.remove_weird_characters(quote)
+                    CSV.write_record_in_csv(book.title, book.author, quote)
         CSV.close_file()
 
     def update_csv():
@@ -71,4 +79,4 @@ class Book:
         CSV.close_file()
 
 
-Book.set_books_from_csv()
+
