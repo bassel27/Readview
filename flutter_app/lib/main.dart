@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'book.dart';
+// import 'book.dart';
+// import 'pages/dailyreview.dart';
 
-void main() {
-  runApp(MaterialApp(home: Home()));
-}
+void main() => runApp(MaterialApp(
+      home: Home(),
+    ));
 
 class Home extends StatelessWidget {
   @override
