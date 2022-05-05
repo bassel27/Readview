@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'book.dart';
 
 void main() {
-  runApp(MaterialApp(
-      home:
-          Home())); // the home property determines what's gonna show up on the home screen of the app
+  runApp(MaterialApp(home: Home()));
 }
 
 class Home extends StatelessWidget {
@@ -61,6 +59,7 @@ class HomeBody extends StatelessWidget {
   void dailyReview() {}
   void favorites() {}
   void browseByTheme() {}
+  void browseByBook() {}
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -75,6 +74,8 @@ class HomeBody extends StatelessWidget {
               g -= subtractAmount, Icons.favorite),
           HomeButton("Browse by Theme", browseByTheme, r -= subtractAmount,
               g -= subtractAmount, Icons.theater_comedy),
+          HomeButton("Browse by Book", browseByBook, r -= subtractAmount,
+              g -= subtractAmount, Icons.book)
         ]);
   }
 }
