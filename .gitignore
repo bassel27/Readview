@@ -2,5 +2,5 @@ Books.csv
 __pycache__
 flutter_app/*
 !flutter_app/lib/main.dart
-!flutter_app/lib/pages/home.dart
+!flutter_app/lib/
 __pycache__
