@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import '/Functions/daily_review.dart';
+import 'dart:convert';
+
+var url = "http://10.0.2.2:5000/?query=1"; // to be modified
+var data;
+var decoded;
 
 class Home extends StatelessWidget {
   @override
@@ -28,13 +34,17 @@ class HomeButton extends StatelessWidget {
   final r;
   final g;
   final icon;
+
   HomeButton(this.text, this.route, this.r, this.g, this.icon);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         Navigator.pushNamed(context, route);
+        data = await fetchData(url);
+        decoded = jsonDecode(data);
+        // print(decoded['output']);
       },
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Icon(icon, size: sizeIcon),

@@ -4,3 +4,4 @@ flutter_app/*
 !flutter_app/lib/main.dart
 !flutter_app/lib/
 __pycache__
+flask_env
