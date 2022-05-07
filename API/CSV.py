@@ -7,7 +7,6 @@ csv_appender = writer(append_file, lineterminator="\n")
 csv_reader = DictReader(read_file)
 
 
-
 def initialize_csv():
     csv_appender.writerow(["Title", "Author", "Quote"])  # header
 
@@ -25,4 +24,3 @@ def close_file():
         read_file.close()
     except:
         pass
-

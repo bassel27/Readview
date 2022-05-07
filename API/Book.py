@@ -30,7 +30,7 @@ class Book:
         return books  # returns a list of books
 
     def remove_weird_characters(quote):
-        quote = quote.encode("ascii", "ignore")   #ignores non-ascii characters
+        quote = quote.encode("ascii", "ignore")  # ignores non-ascii characters
         quote = quote.decode()
         return quote
 
@@ -73,10 +73,10 @@ class Book:
                 books.append(Book(line1["Title"], line1["Author"], list(quotes)))
                 break
         CSV.reset_csv_reader()
-        for book in books:
-            print(book.title, book.quotes)
 
+        # for book in books:
+        #     print(book.title, book.quotes)
         CSV.close_file()
+        return books
 
-
-
+        

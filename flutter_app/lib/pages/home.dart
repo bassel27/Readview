@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import '/Functions/daily_review.dart';
+//import 'package:readview_app/pages/loading_screen.dart';
+import '/services/daily_review.dart';
 import 'dart:convert';
-
-var url = "http://10.0.2.2:5000/?query=1"; // to be modified
-var data;
-var decoded;
 
 class Home extends StatelessWidget {
   @override
@@ -30,21 +27,18 @@ class HomeButton extends StatelessWidget {
   static const sizeFont = 23.0;
   static const sizeIcon = 30.0;
   final text;
-  final route;
   final r;
   final g;
   final icon;
-
-  HomeButton(this.text, this.route, this.r, this.g, this.icon);
+  final Function function;
+  final route;
+  HomeButton(this.text, this.function, this.route, this.r, this.g, this.icon);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () async {
-        Navigator.pushNamed(context, route);
-        data = await fetchData(url);
-        decoded = jsonDecode(data);
-        // print(decoded['output']);
+      onPressed: () {
+        function(context, route);
       },
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Icon(icon, size: sizeIcon),
@@ -62,10 +56,20 @@ class HomeBody extends StatelessWidget {
   var r = 150;
   var g = 180;
   static const subtractAmount = 20;
+
+  void dailyReview(context, route) async {
+    final dic;
+    Navigator.pushNamed(context, route);
+    dic = jsonDecode(
+        await fetchData()); // use await to make it know when the async called func is complete (even if this func has void return, you must return Future<void>)
+    print(dic);
+  }
+
   void updateQuotes() {}
   void favorites() {}
   void browseByTheme() {}
   void browseByBook() {}
+  void loadingScreen() {}
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,15 +77,15 @@ class HomeBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch, //horizontal in a column
         children: [
           SizedBox(height: 20),
-          HomeButton(
-              "Daily Review", '/dailyReview', r, g, Icons.calendar_month),
-          HomeButton("Update Quotes", '/loadingScreen', r -= subtractAmount,
+          HomeButton("Daily Review", dailyReview, '/dailyReview', r, g,
+              Icons.calendar_month),
+          HomeButton("Update Quotes", loadingScreen, '', r -= subtractAmount,
               g -= subtractAmount, Icons.update),
-          HomeButton("Favorites", favorites, r -= subtractAmount,
+          HomeButton("Favorites", favorites, '', r -= subtractAmount,
               g -= subtractAmount, Icons.favorite),
-          HomeButton("Browse by Theme", browseByTheme, r -= subtractAmount,
+          HomeButton("Browse by Theme", browseByTheme, '', r -= subtractAmount,
               g -= subtractAmount, Icons.theater_comedy),
-          HomeButton("Browse by Book", browseByBook, r -= subtractAmount,
+          HomeButton("Browse by Book", browseByBook, '', r -= subtractAmount,
               g -= subtractAmount, Icons.book)
         ]);
   }
