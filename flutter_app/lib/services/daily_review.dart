@@ -38,7 +38,8 @@ void dailyReview(context, route) async {
   final tempDict;
   Navigator.pushNamed(context, route);
   tempDict = jsonDecode(
-      await fetchData()); // use await to make it know when the async called func is complete (even if this func has void return, you must return Future<void>)
+    await fetchData(),
+  ); // use await to make it know when the async called func is complete (even if this func has void return, you must return Future<void>)
   inistantiateClass(tempDict);
 
   // print(dic);

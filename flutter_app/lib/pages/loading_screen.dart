@@ -8,6 +8,12 @@ class loadingScreen extends StatefulWidget {
 class _loadingScreenState extends State<loadingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("loadingScreen")));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "loadingScreen",
+        ),
+      ),
+    );
   }
 }

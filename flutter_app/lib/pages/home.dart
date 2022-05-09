@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:readview_app/pages/loading_screen.dart';
 import '/services/daily_review.dart';
 
 class Home extends StatelessWidget {
@@ -35,29 +34,31 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return Expanded(
+        child: ElevatedButton(
       onPressed: () {
         function(context, route);
       },
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        //TODO: limit minimzing to the row width
         Icon(icon, size: sizeIcon),
         SizedBox(width: 10),
         Text(text, style: TextStyle(fontSize: sizeFont)),
       ]),
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(200, 80),
+        //TODO: button doeesn't resize when screen is smaller
         primary: Color.fromARGB(255, r, g, 208),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
         elevation: 0,
       ),
-    );
+    ));
   }
 }
 
 //ignore: must_be_immutable
 class HomeBody extends StatelessWidget {
-  var r = 150;
-  var g = 180;
+  var red = 150;
+  var green = 180;
   static const subtractAmount = 20;
 
   void updateQuotes() {}
@@ -68,19 +69,23 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.start, //vertical in a column
         crossAxisAlignment: CrossAxisAlignment.stretch, //horizontal in a column
         children: [
-          HomeButton("Daily Review", dailyReview, '/dailyReview', r, g,
+          HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
               Icons.calendar_month),
-          HomeButton("Update Quotes", loadingScreen, '', r -= subtractAmount,
-              g -= subtractAmount, Icons.update),
-          HomeButton("Favorites", favorites, '', r -= subtractAmount,
-              g -= subtractAmount, Icons.favorite),
-          HomeButton("Browse by Theme", browseByTheme, '', r -= subtractAmount,
-              g -= subtractAmount, Icons.theater_comedy),
-          HomeButton("Browse by Book", browseByBook, '', r -= subtractAmount,
-              g -= subtractAmount, Icons.book)
+          HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
+              green -= subtractAmount, Icons.update),
+          HomeButton("Favorites", favorites, '', red -= subtractAmount,
+              green -= subtractAmount, Icons.favorite),
+          HomeButton(
+              "Browse by Theme",
+              browseByTheme,
+              '',
+              red -= subtractAmount,
+              green -= subtractAmount,
+              Icons.theater_comedy),
+          HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
+              green -= subtractAmount, Icons.book),
         ]);
   }
 }
