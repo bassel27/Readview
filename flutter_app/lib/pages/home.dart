@@ -22,9 +22,9 @@ class Home extends StatelessWidget {
 }
 
 class HomeButton extends StatelessWidget {
-  static const sizeFont = 23.0;
+  static const sizeFont = 25.0;
   static const sizeIcon = 30.0;
-  final text;
+  final text; // note that you can't define class variables with var because if you var text; this means that text is gonna be a dynamic variable 
   final r;
   final g;
   final icon;
@@ -37,14 +37,30 @@ class HomeButton extends StatelessWidget {
     return Expanded(
         child: ElevatedButton(
       onPressed: () {
-        function(context, route);
+        function(context,
+            route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
       },
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        //TODO: limit minimzing to the row width
-        Icon(icon, size: sizeIcon),
-        SizedBox(width: 10),
-        Text(text, style: TextStyle(fontSize: sizeFont)),
-      ]),
+      child: ListTile(
+        // adds padding and space between icon and text// this is what makes the expanding effect of the button  //TODO: limit minimzing to the row width
+        iconColor: Colors.white,
+        textColor: Colors.white,
+
+        leading: Icon(
+          icon,
+          size: sizeIcon,
+        ),
+        title: Row(children: [
+          SizedBox(width: 40),
+          Text(
+            //  TODO: center text
+            text,
+            style: TextStyle(
+              fontSize: sizeFont,
+              letterSpacing: 1.5,
+            ),
+          ),
+        ]),
+      ),
       style: ElevatedButton.styleFrom(
         //TODO: button doeesn't resize when screen is smaller
         primary: Color.fromARGB(255, r, g, 208),
@@ -68,24 +84,17 @@ class HomeBody extends StatelessWidget {
   void loadingScreen() {}
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, //horizontal in a column
-        children: [
-          HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
-              Icons.calendar_month),
-          HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
-              green -= subtractAmount, Icons.update),
-          HomeButton("Favorites", favorites, '', red -= subtractAmount,
-              green -= subtractAmount, Icons.favorite),
-          HomeButton(
-              "Browse by Theme",
-              browseByTheme,
-              '',
-              red -= subtractAmount,
-              green -= subtractAmount,
-              Icons.theater_comedy),
-          HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
-              green -= subtractAmount, Icons.book),
-        ]);
+    return Column(children: [
+      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
+          Icons.calendar_month),
+      HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.update),
+      HomeButton("Favorites", favorites, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.favorite),
+      HomeButton("Browse by Theme", browseByTheme, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.theater_comedy),
+      HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.book),
+    ]);
   }
 }

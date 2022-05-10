@@ -7,11 +7,6 @@ class DailyReview extends StatefulWidget {
 
 class _DailyReviewState extends State<DailyReview> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 68, 75, 105),
@@ -22,8 +17,10 @@ class _DailyReviewState extends State<DailyReview> {
           children: [
             Expanded(
               child: Card(
+                //  shadowed rectangle and curved edges
                 color: Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
+                  // the child of the padding widget is gonnna get a blanket around it
                   padding: EdgeInsets.all(10),
                   child: Text(
                     "Quote goes here",
