@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
 class HomeButton extends StatelessWidget {
   static const sizeFont = 25.0;
   static const sizeIcon = 30.0;
-  final text; // note that you can't define class variables with var because if you var text; this means that text is gonna be a dynamic variable 
+  final text; // note that you can't define class variables with var because if you var text; this means that text is gonna be a dynamic variable
   final r;
   final g;
   final icon;
@@ -85,8 +85,8 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
-          Icons.calendar_month),
+      HomeButton("Daily Review", dailyReviewButtonFunc, '/dailyReview', red,
+          green, Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
           green -= subtractAmount, Icons.update),
       HomeButton("Favorites", favorites, '', red -= subtractAmount,

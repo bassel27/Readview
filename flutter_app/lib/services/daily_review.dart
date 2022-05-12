@@ -5,16 +5,16 @@ import 'dart:convert';
 
 Future<String> fetchData({String url = "http://10.0.2.2:5000/?query=1"}) async {
   http.Response response = await http.get(Uri.parse(url));
-  print(response.body.runtimeType);
   return response
       .body; // retruns JSON string that has to be decoded to be converted
 }
 
-void dailyReview(context, route) async {
-  void inistantiateClass(tempDict) {
+void dailyReviewButtonFunc(context, route) async {
+  
+  List<Book> inistantiateClass(tempDict) {
     List<Book> books = [];
     List<String> quotes = [];
-    for (var c1 = 0, c2 = 1;
+    for (int c1 = 0, c2 = 1;
         c1 < tempDict.length && c2 < tempDict.length;
         c1++, c2++) {
       Map bookDict1 = tempDict[c1.toString()];
@@ -33,6 +33,7 @@ void dailyReview(context, route) async {
     for (int i = 0; i < books.length; i++) {
       print("${books[i].title}, ${books[i].author}, ${books[i].quotes}");
     }
+    return books;
   }
 
   final tempDict;
