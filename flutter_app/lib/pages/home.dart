@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/services/daily_review.dart';
+import '../services/daily_review_service.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -24,13 +24,14 @@ class Home extends StatelessWidget {
 class HomeButton extends StatelessWidget {
   static const sizeFont = 25.0;
   static const sizeIcon = 30.0;
-  final text; // note that you can't define class variables with var because if you var text; this means that text is gonna be a dynamic variable
-  final r;
-  final g;
+  final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
+  final red;
+  final green;
   final icon;
   final Function function;
   final route;
-  HomeButton(this.text, this.function, this.route, this.r, this.g, this.icon);
+  HomeButton(
+      this.text, this.function, this.route, this.red, this.green, this.icon);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class HomeButton extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         //TODO: button doeesn't resize when screen is smaller
-        primary: Color.fromARGB(255, r, g, 208),
+        primary: Color.fromARGB(255, red, green, 208),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
         elevation: 0,
       ),
@@ -85,8 +86,8 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      HomeButton("Daily Review", dailyReviewButtonFunc, '/dailyReview', red,
-          green, Icons.calendar_month),
+      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
+          Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
           green -= subtractAmount, Icons.update),
       HomeButton("Favorites", favorites, '', red -= subtractAmount,

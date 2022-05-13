@@ -9,7 +9,7 @@ Future<String> fetchData({String url = "http://10.0.2.2:5000/?query=1"}) async {
       .body; // retruns JSON string that has to be decoded to be converted
 }
 
-void dailyReviewButtonFunc(context, route) async {
+void dailyReview(context, route) async {
   
   List<Book> inistantiateClass(tempDict) {
     List<Book> books = [];
