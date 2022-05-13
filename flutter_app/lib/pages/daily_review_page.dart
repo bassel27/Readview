@@ -10,23 +10,25 @@ class DailyReview extends StatefulWidget {
 }
 
 class _DailyReviewState extends State<DailyReview> {
+  
   @override
   Widget build(BuildContext context) {
+    var quoteCard = QuoteCard();
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 111, 122, 174),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            quoteCard(),
+          children: [quoteCard
+            ,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    TTS tts = TTS(quoteCard().getCurrentQuote());
+                    TTS tts = TTS(quoteCard.getCurrentQuote());
                     tts.speak();
                   },
                   child: Icon(Icons.hearing),

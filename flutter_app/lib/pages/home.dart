@@ -21,6 +21,33 @@ class Home extends StatelessWidget {
   }
 }
 
+class HomeBody extends StatelessWidget {
+  static const subtractAmount = 20;
+
+  void updateQuotes() {}
+  void favorites() {}
+  void browseByTheme() {}
+  void browseByBook() {}
+  void loadingScreen() {}
+  @override
+  Widget build(BuildContext context) {
+    var red = 150;
+    var green = 180;
+    return Column(children: [
+      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
+          Icons.calendar_month),
+      HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.update),
+      HomeButton("Favorites", favorites, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.favorite),
+      HomeButton("Browse by Theme", browseByTheme, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.theater_comedy),
+      HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
+          green -= subtractAmount, Icons.book),
+    ]);
+  }
+}
+
 class HomeButton extends StatelessWidget {
   static const sizeFont = 25.0;
   static const sizeIcon = 30.0;
@@ -69,33 +96,5 @@ class HomeButton extends StatelessWidget {
         elevation: 0,
       ),
     ));
-  }
-}
-
-//ignore: must_be_immutable
-class HomeBody extends StatelessWidget {
-  var red = 150;
-  var green = 180;
-  static const subtractAmount = 20;
-
-  void updateQuotes() {}
-  void favorites() {}
-  void browseByTheme() {}
-  void browseByBook() {}
-  void loadingScreen() {}
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
-          Icons.calendar_month),
-      HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.update),
-      HomeButton("Favorites", favorites, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.favorite),
-      HomeButton("Browse by Theme", browseByTheme, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.theater_comedy),
-      HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.book),
-    ]);
   }
 }

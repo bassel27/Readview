@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-int bookIndex = 0;
-
-class quoteCard extends StatefulWidget {
+class QuoteCard extends StatefulWidget {
   final List<String> stringList = [
     "1. I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.",
     "2. Two things are infinite: the universe and human stupidity; and I'm not sure about the universe ",
@@ -10,27 +8,27 @@ class quoteCard extends StatefulWidget {
     "4. I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel."
   ];
   @override
-  State<quoteCard> createState() => _quoteCardState();
+  State<QuoteCard> createState() => _QuoteCardState();
 
+  int bookIndex = 0;
   String getCurrentQuote() {
     return stringList[bookIndex];
   }
 }
 
-class _quoteCardState extends State<quoteCard> {
+class _QuoteCardState extends State<QuoteCard> {
   @override
   Widget build(BuildContext context) {
-    print(bookIndex);
     return Expanded(
       child: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {
           if (details.velocity.pixelsPerSecond.dx < 1) {
             setState(() {
-              bookIndex += 1;
+              widget.bookIndex += 1;
             });
           } else {
             setState(() {
-              bookIndex -= 1;
+              widget.bookIndex -= 1;
             });
           }
         },
@@ -45,7 +43,7 @@ class _quoteCardState extends State<quoteCard> {
           child: Padding(
             // the child of the padding widget is gonnna get a blanket around it
             padding: EdgeInsets.all(10),
-            child: Text("${widget.stringList[bookIndex]}"),
+            child: Text("${widget.stringList[widget.bookIndex]}"),
           ),
         ),
       ),
