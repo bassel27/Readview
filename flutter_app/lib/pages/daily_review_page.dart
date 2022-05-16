@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '/classes/tts.dart';
 import '../classes/quoteCard.dart';
 
+const scaffoldColor = Color.fromARGB(255, 111, 122, 174);
+
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
 
@@ -10,18 +12,17 @@ class DailyReview extends StatefulWidget {
 }
 
 class _DailyReviewState extends State<DailyReview> {
-  
   @override
   Widget build(BuildContext context) {
     var quoteCard = QuoteCard();
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 111, 122, 174),
+      backgroundColor: scaffoldColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [quoteCard
-            ,
+          children: [
+            quoteCard,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

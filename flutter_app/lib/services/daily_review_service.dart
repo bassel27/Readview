@@ -10,7 +10,6 @@ Future<String> fetchData({String url = "http://10.0.2.2:5000/?query=1"}) async {
 }
 
 void dailyReview(context, route) async {
-  
   List<Book> inistantiateClass(tempDict) {
     List<Book> books = [];
     List<String> quotes = [];

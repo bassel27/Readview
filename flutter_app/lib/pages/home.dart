@@ -22,8 +22,6 @@ class Home extends StatelessWidget {
 }
 
 class HomeBody extends StatelessWidget {
-  static const subtractAmount = 20;
-
   void updateQuotes() {}
   void favorites() {}
   void browseByTheme() {}
@@ -31,41 +29,38 @@ class HomeBody extends StatelessWidget {
   void loadingScreen() {}
   @override
   Widget build(BuildContext context) {
-    var red = 150;
-    var green = 180;
     return Column(children: [
-      HomeButton("Daily Review", dailyReview, '/dailyReview', red, green,
-          Icons.calendar_month),
-      HomeButton("Update Quotes", loadingScreen, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.update),
-      HomeButton("Favorites", favorites, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.favorite),
-      HomeButton("Browse by Theme", browseByTheme, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.theater_comedy),
-      HomeButton("Browse by Book", browseByBook, '', red -= subtractAmount,
-          green -= subtractAmount, Icons.book),
+      HomeButton(
+          "Daily Review", dailyReview, '/dailyReview', Icons.calendar_month),
+      HomeButton("Update Quotes", loadingScreen, '', Icons.update),
+      HomeButton("Favorites", favorites, '', Icons.favorite),
+      HomeButton("Browse by Theme", browseByTheme, '', Icons.theater_comedy),
+      HomeButton("Browse by Book", browseByBook, '', Icons.book),
     ]);
   }
 }
 
+var red = 150;
+var green = 180;
+
 class HomeButton extends StatelessWidget {
   static const sizeFont = 25.0;
   static const sizeIcon = 30.0;
+  static const subtractAmount = 20;
   final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
-  final red;
-  final green;
   final icon;
-  final Function function;
+  final Function onPressed;
   final route;
-  HomeButton(
-      this.text, this.function, this.route, this.red, this.green, this.icon);
+  HomeButton(this.text, this.onPressed, this.route, this.icon);
 
   @override
   Widget build(BuildContext context) {
+    red -= subtractAmount; // TODO: ask Deeb
+    green -= subtractAmount;
     return Expanded(
         child: ElevatedButton(
       onPressed: () {
-        function(context,
+        onPressed(context,
             route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
       },
       child: ListTile(
@@ -80,7 +75,6 @@ class HomeButton extends StatelessWidget {
         title: Row(children: [
           SizedBox(width: 40),
           Text(
-            //  TODO: center text
             text,
             style: TextStyle(
               fontSize: sizeFont,
@@ -92,6 +86,7 @@ class HomeButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         //TODO: button doeesn't resize when screen is smaller
         primary: Color.fromARGB(255, red, green, 208),
+
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
         elevation: 0,
       ),

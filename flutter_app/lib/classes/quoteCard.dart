@@ -17,6 +17,7 @@ class QuoteCard extends StatefulWidget {
 }
 
 class _QuoteCardState extends State<QuoteCard> {
+  //TODO: bookIndex here
   @override
   Widget build(BuildContext context) {
     return Expanded(
