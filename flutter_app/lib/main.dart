@@ -7,8 +7,10 @@ import 'pages/loading_screen.dart';
 void main() {
   runApp(
     MaterialApp(
+      initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
+        '/': (context) =>
+            Home(), // context: find a widget in the OVERALL widget tree
         '/dailyReview': (context) => DailyReview(),
         '/loadingScreen': (context) => loadingScreen(),
       },

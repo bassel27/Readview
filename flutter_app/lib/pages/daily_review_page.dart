@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '/classes/tts.dart';
-import '../classes/quoteCard.dart';
-
-const scaffoldColor = Color.fromARGB(255, 111, 122, 174);
+import '/components/tts.dart';
+import '../components/quoteCard.dart';
+import '../others/constants.dart';
 
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
@@ -16,7 +15,7 @@ class _DailyReviewState extends State<DailyReview> {
   Widget build(BuildContext context) {
     var quoteCard = QuoteCard();
     return Scaffold(
-      backgroundColor: scaffoldColor,
+      backgroundColor: kScaffoldColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -29,8 +28,8 @@ class _DailyReviewState extends State<DailyReview> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    TTS tts = TTS(quoteCard.getCurrentQuote());
-                    tts.speak();
+                      TTS tts = TTS(quoteCard.getCurrentQuote());
+                      tts.speak();
                   },
                   child: Icon(Icons.hearing),
                 ),

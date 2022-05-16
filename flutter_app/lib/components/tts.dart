@@ -7,6 +7,7 @@ class TTS {
     FlutterTts flutterTts = FlutterTts();
     // await flutterTts.awaitSpeakCompletion(true);
     await flutterTts.setPitch(1.0);
+    // await flutterTts.setVolume(1.0); // 1 is default
     await flutterTts.speak(this.text);
   }
 }
