@@ -1,4 +1,4 @@
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;  // to clarify that get method is used from http package because it look like it's a user-defined function
 import '/components/book.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -9,7 +9,7 @@ Future<String> fetchData({String url = "http://10.0.2.2:5000/?query=1"}) async {
       .body; // retruns JSON string that has to be decoded to be converted
 }
 
-void dailyReview(context, route) async {
+void dailyReview(context, route) async {    //TODO: if record empty, last book
   List<Book> inistantiateClass(tempDict) {
     List<Book> books = [];
     List<String> quotes = [];

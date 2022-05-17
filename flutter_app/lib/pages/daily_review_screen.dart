@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/components/tts.dart';
+import '../services/tts.dart';
 import '../components/quoteCard.dart';
 import '../others/constants.dart';
 
