@@ -3,14 +3,17 @@ import '../services/tts.dart';
 import '../components/quoteCard.dart';
 import '../others/constants.dart';
 
+
+
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
-
+  static const routes = '/dailyReview';  
   @override
   State<DailyReview> createState() => _DailyReviewState();
 }
 
 class _DailyReviewState extends State<DailyReview> {
+  
   @override
   Widget build(BuildContext context) {
     var quoteCard = QuoteCard();
@@ -28,8 +31,8 @@ class _DailyReviewState extends State<DailyReview> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                      TTS tts = TTS(quoteCard.getCurrentQuote());
-                      tts.speak();
+                    TTS tts = TTS(quoteCard.getCurrentQuote());
+                    tts.speak();
                   },
                   child: Icon(Icons.hearing),
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screens/daily_review_screen.dart';
 import '../others/constants.dart';
-import '../services/daily_review_service.dart';
 
 class HomeBody extends StatelessWidget {
   void updateQuotes() {}
@@ -11,8 +11,8 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      HomeButton(
-          "Daily Review", dailyReview, '/dailyReview', Icons.calendar_month),
+      HomeButton("Daily Review", DailyReview, DailyReview.routes,
+          Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', Icons.update),
       HomeButton("Favorites", favorites, '', Icons.favorite),
       HomeButton("Browse by Theme", browseByTheme, '', Icons.theater_comedy),
@@ -27,7 +27,7 @@ var green = 180;
 class HomeButton extends StatelessWidget {
   final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
   final icon;
-  final Function onPressed;
+  final dynamic onPressed;
   final route;
   HomeButton(this.text, this.onPressed, this.route, this.icon);
 
@@ -38,7 +38,7 @@ class HomeButton extends StatelessWidget {
     return Expanded(
         child: ElevatedButton(
       onPressed: () {
-        onPressed(context,
+        Navigator.pushNamed(context,
             route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
       },
       child: ListTile(
