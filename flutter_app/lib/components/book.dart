@@ -1,12 +1,26 @@
 import 'dart:convert';
+import 'dart:math';
+
+List<Book> books = Book.getBooks();
+var bookIndexList =
+    shuffle(List<int>.generate(books.length, (int index) => index));
 
 class Book {
-  String? title;
-  String ?author;
-  List<String>? quotes;
+  String title;
+  String author;
+  List<String> quotes;
   int _bookIndex = 0;
-  final List<Book> books = getBooks();
-  Book({this.title, this.author, this.quotes});
+  Book({required this.title, required this.author, required this.quotes});
+  late var quotesIndexList =
+      shuffle(List<int>.generate(this.quotes.length, (int index) => index));
+
+  static Book getRandomBook() {
+    return books[Random().nextInt(books.length)]; // TODO: prevent repitition
+  }
+
+  String getRandomQuote() {
+    return this.quotes[Random().nextInt(quotes.length)]; //without this??
+  }
 
   static List<Book> getBooks() {
     var tempDict = jsonDecode(
@@ -21,12 +35,18 @@ class Book {
       Map bookDict2 = tempDict[c2.toString()];
       quotes.add(bookDict1['Quote']);
       if (bookDict1['Title'] != bookDict2['Title']) {
-        books.add(Book(title: bookDict1['Title'], author: bookDict1['Author'],quotes: quotes));
+        books.add(Book(
+            title: bookDict1['Title'],
+            author: bookDict1['Author'],
+            quotes: quotes));
         quotes = [];
       }
       if (c2 + 1 == tempDict.length) {
         quotes.add(bookDict2['Quote']);
-        books.add(Book(title:bookDict2['Title'], author:bookDict2['Author'], quotes:quotes));
+        books.add(Book(
+            title: bookDict2['Title'],
+            author: bookDict2['Author'],
+            quotes: quotes));
         quotes = [];
       }
     }
@@ -43,6 +63,20 @@ class Book {
   String getQuote() {
     return '7';
   }
+}
+
+List shuffle(List array) {
+  var random = Random(); //import 'dart:math';
+
+  // Go through all elementsof list
+  for (var i = array.length - 1; i > 0; i--) {
+    // Pick a random number according to the lenght of list
+    var n = random.nextInt(i + 1);
+    var temp = array[i];
+    array[i] = array[n];
+    array[n] = temp;
+  }
+  return array;
 }
 
 var booksJsonString = r'''{

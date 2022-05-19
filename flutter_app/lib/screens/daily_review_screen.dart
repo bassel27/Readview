@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/tts.dart';
-import '../components/quoteCard.dart';
+import '../components/quote_card.dart';
 import '../others/constants.dart';
-
-
 
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
