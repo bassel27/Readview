@@ -15,6 +15,7 @@ class Book {
       shuffle(List<int>.generate(this.quotes.length, (int index) => index));
 
   static Book getRandomBook() {
+    print("book index list: $bookIndexList");
     return books[Random().nextInt(books.length)]; // TODO: prevent repitition
   }
 

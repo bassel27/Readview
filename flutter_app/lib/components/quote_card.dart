@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/components/book.dart';
+import '../others/constants.dart';
 
 class QuoteCard extends StatefulWidget {
   late Book randomBook;
@@ -15,7 +16,8 @@ class QuoteCard extends StatefulWidget {
 class _QuoteCardState extends State<QuoteCard> {
   @override
   Widget build(BuildContext context) {
-    widget.randomBook = Book.getRandomBook();
+    widget.randomBook =
+        Book.getRandomBook(); // TODO: this causes change on hot reload
     widget.quote = widget.randomBook.getRandomQuote();
     return Expanded(
       child: GestureDetector(
@@ -37,7 +39,15 @@ class _QuoteCardState extends State<QuoteCard> {
           child: Padding(
             // the child of the padding widget is gonnna get a blanket around it
             padding: EdgeInsets.all(10),
-            child: Text(widget.quote),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  widget.quote,
+                  style: kQuoteTextStyle,
+                ),
+              ),
+            ),
           ),
         ),
       ),
