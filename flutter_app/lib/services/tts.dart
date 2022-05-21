@@ -1,13 +1,17 @@
 import 'package:flutter_tts/flutter_tts.dart';
+FlutterTts flutterTts = FlutterTts();
 
 class TTS {
+  static bool isStopped = false;
   final text;
   TTS(this.text);
   void speak() async {
-    FlutterTts flutterTts = FlutterTts();
-    // await flutterTts.awaitSpeakCompletion(true);
     await flutterTts.setPitch(1.0);
-    // await flutterTts.setVolume(1.0); // 1 is default
-    await flutterTts.speak(this.text);
+    await flutterTts.setLanguage("en-US");
+    var result = flutterTts.speak(this.text);
+  }
+
+  static stop() async {
+    await flutterTts.stop();
   }
 }

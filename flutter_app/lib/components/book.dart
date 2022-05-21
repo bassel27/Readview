@@ -57,9 +57,9 @@ class Book {
         quotes = [];
       }
     }
-    for (int i = 0; i < books.length; i++) {
-      print("${books[i].title}, ${books[i].author}, ${books[i].quotes}");
-    }
+    // for (int i = 0; i < books.length; i++) {
+    //   print("${books[i].title}, ${books[i].author}, ${books[i].quotes}");
+    // }
     return books;
   }
 

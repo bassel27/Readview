@@ -17,10 +17,11 @@ class _DailyReviewState extends State<DailyReview> {
   @override
   Widget build(BuildContext context) {
     var quoteCard = QuoteCard();
+    TTS tts;
     return Scaffold(
       backgroundColor: kScaffoldColor,
       body: SafeArea(
-        child: Column( 
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -35,7 +36,7 @@ class _DailyReviewState extends State<DailyReview> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    TTS tts = TTS(quoteCard.getCurrentQuote());
+                    tts = TTS(quoteCard.getCurrentQuote());
                     tts.speak();
                   },
                   child: Icon(Icons.hearing),

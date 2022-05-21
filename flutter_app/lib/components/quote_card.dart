@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/components/book.dart';
 import '../others/constants.dart';
 import 'quotes_stack.dart';
+import '/services/tts.dart';
 
 class QuoteCard extends StatefulWidget {
   Book randomBook = Book.getRandomBook();
@@ -31,9 +32,12 @@ class _QuoteCardState extends State<QuoteCard> {
     return Expanded(
       child: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {
-          if (details.velocity.pixelsPerSecond.dx < 1) {
-            //next
-            setState(() {
+          setState(() {
+            if (details.velocity.pixelsPerSecond.dx < 1) {
+              //next
+              try {
+                TTS.stop();
+              } catch (e) {}
               widget.changeBookAndQuote();
               if (widget.secondaryStack.isEmpty == true) {
                 widget.mainStack.push(widget.quote);
@@ -42,13 +46,11 @@ class _QuoteCardState extends State<QuoteCard> {
                   widget.mainStack.push(widget.secondaryStack.pop());
                 }
               }
-            });
-          } else {
-            //prev
-            setState(() {
+            } else {
+              //prev
               widget.secondaryStack.push(widget.mainStack.pop());
-            });
-          }
+            }
+          });
         },
         child: Card(
           shape: RoundedRectangleBorder(
