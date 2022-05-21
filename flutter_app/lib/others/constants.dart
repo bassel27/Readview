@@ -18,3 +18,4 @@ RoundedRectangleBorder kCardRoundedRectangleBorder = RoundedRectangleBorder(
   side: BorderSide(color: Color.fromARGB(179, 135, 111, 111), width: 1),
   borderRadius: BorderRadius.circular(10),
 );
+

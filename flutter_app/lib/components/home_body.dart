@@ -11,8 +11,8 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      HomeButton("Daily Review", DailyReview, DailyReview.routes,
-          Icons.calendar_month),
+      HomeButton(
+          "Daily Review", DailyReview, DailyReview.route, Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', Icons.update),
       HomeButton("Favorites", favorites, '', Icons.favorite),
       HomeButton("Browse by Theme", browseByTheme, '', Icons.theater_comedy),

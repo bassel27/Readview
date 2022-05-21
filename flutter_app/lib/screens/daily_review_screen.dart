@@ -10,7 +10,7 @@ var quoteCard = QuoteCard();
 
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
-  static const routes = '/dailyReview';
+  static const route = '/dailyReview';
   @override
   State<DailyReview> createState() => _DailyReviewState();
 }
