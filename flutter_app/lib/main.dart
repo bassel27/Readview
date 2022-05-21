@@ -1,8 +1,8 @@
 // the main.dart file usually contains themes and directs to different screens
 import 'package:flutter/material.dart';
-import '../screens/daily_review_screen.dart';
-import '../screens/home_screen.dart';
-import '../screens/loading_screen.dart';
+import 'screens/daily_review_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/loading_screen.dart';
 
 void main() {
   runApp(

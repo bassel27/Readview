@@ -2,25 +2,31 @@ import 'dart:convert';
 import 'dart:math';
 
 List<Book> books = Book.getBooks();
-var bookIndexList =
-    shuffle(List<int>.generate(books.length, (int index) => index));
 
 class Book {
   String title;
   String author;
   List<String> quotes;
   int _bookIndex = 0;
-  Book({required this.title, required this.author, required this.quotes});
-  late var quotesIndexList =
-      shuffle(List<int>.generate(this.quotes.length, (int index) => index));
+  late List<int> quotesIndexList;
+
+  Book({required this.title, required this.author, required this.quotes}) {
+    this.quotesIndexList =
+        shuffle(List<int>.generate(quotes.length, (int index) => index));
+  }
 
   static Book getRandomBook() {
-    print("book index list: $bookIndexList");
-    return books[Random().nextInt(books.length)]; // TODO: prevent repitition
+    return books[Random().nextInt(books.length)];
   }
 
   String getRandomQuote() {
-    return this.quotes[Random().nextInt(quotes.length)]; //without this??
+    print(quotesIndexList);
+    if (quotesIndexList.length == 0) {
+      print("a7aaaa ${this.title}");
+    }
+    return this.quotes[Random().nextInt(quotes.length)];
+    // return this.quotes[quotesIndexList
+    //     .removeLast()]; //without this?? // TODO: prevent repitition
   }
 
   static List<Book> getBooks() {
@@ -66,7 +72,7 @@ class Book {
   }
 }
 
-List shuffle(List array) {
+List<int> shuffle(List<int> array) {
   var random = Random(); //import 'dart:math';
 
   // Go through all elementsof list

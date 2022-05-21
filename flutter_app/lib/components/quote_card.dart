@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import '/components/book.dart';
 import '../others/constants.dart';
+import 'quotes_stack.dart';
 
 class QuoteCard extends StatefulWidget {
-  late Book randomBook;
-  late String quote;
+  Book randomBook = Book.getRandomBook();
+  late String quote = randomBook.getRandomQuote();
+  final mainStack = QuotesStack<String>();
+  QuoteCard() {
+    mainStack.push(quote);
+  }
+  final secondaryStack = QuotesStack<String>();
   String getCurrentQuote() {
     return quote;
+  }
+
+  void changeBookAndQuote() {
+    randomBook = Book.getRandomBook();
+    quote = randomBook.getRandomQuote();
   }
 
   @override
@@ -16,16 +27,27 @@ class QuoteCard extends StatefulWidget {
 class _QuoteCardState extends State<QuoteCard> {
   @override
   Widget build(BuildContext context) {
-    widget.randomBook =
-        Book.getRandomBook(); // TODO: this causes change on hot reload
-    widget.quote = widget.randomBook.getRandomQuote();
+    widget.quote = widget.mainStack.peek;
     return Expanded(
       child: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {
           if (details.velocity.pixelsPerSecond.dx < 1) {
-            setState(() {});
+            //next
+            setState(() {
+              widget.changeBookAndQuote();
+              if (widget.secondaryStack.isEmpty == true) {
+                widget.mainStack.push(widget.quote);
+              } else {
+                while (widget.secondaryStack.isEmpty == false) {
+                  widget.mainStack.push(widget.secondaryStack.pop());
+                }
+              }
+            });
           } else {
-            setState(() {});
+            //prev
+            setState(() {
+              widget.secondaryStack.push(widget.mainStack.pop());
+            });
           }
         },
         child: Card(
@@ -41,10 +63,12 @@ class _QuoteCardState extends State<QuoteCard> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  widget.quote,
-                  style: kQuoteTextStyle,
+                padding: EdgeInsets.all(20),
+                child: SingleChildScrollView(
+                  child: Text(
+                    widget.quote,
+                    style: kQuoteTextStyle,
+                  ),
                 ),
               ),
             ),
