@@ -35,9 +35,7 @@ class _QuoteCardState extends State<QuoteCard> {
           setState(() {
             if (details.velocity.pixelsPerSecond.dx < 1) {
               //next
-              try {
-                TTS.stop();
-              } catch (e) {}
+              TTS.stop();
               widget.changeBookAndQuote();
               if (widget.secondaryStack.isEmpty == true) {
                 widget.mainStack.push(widget.quote);
@@ -53,24 +51,16 @@ class _QuoteCardState extends State<QuoteCard> {
           });
         },
         child: Card(
-          shape: RoundedRectangleBorder(
-            side:
-                BorderSide(color: Color.fromARGB(179, 135, 111, 111), width: 1),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          //  shadowed rectangle and curved edges
-          color: Color.fromARGB(255, 255, 255, 255),
-          child: Padding(
-            // the child of the padding widget is gonnna get a blanket around it
-            padding: EdgeInsets.all(10),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: SingleChildScrollView(
-                  child: Text(
-                    widget.quote,
-                    style: kQuoteTextStyle,
-                  ),
+          shape:
+              kCardRoundedRectangleBorder, //  shadowed rectangle and curved edges
+          color: kCardColor,
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                child: Text(
+                  widget.quote,
+                  style: kQuoteTextStyle,
                 ),
               ),
             ),
