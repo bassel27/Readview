@@ -6,11 +6,10 @@ import '../services/tts.dart';
 import '../components/quote_card.dart';
 import '../others/constants.dart';
 
-var quoteCard = QuoteCard();
-
 class DailyReview extends StatefulWidget {
   // when you change a stateless widget to a stateful widget, you have to restart
   static const route = '/dailyReview';
+  final quoteCard = QuoteCard();
   @override
   State<DailyReview> createState() => _DailyReviewState();
 }
@@ -25,8 +24,8 @@ class _DailyReviewState extends State<DailyReview> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            quoteCard,
-            buttomBottonsRow(),
+            widget.quoteCard,
+            buttomBottonsRow(widget.quoteCard),
           ],
         ),
       ),
@@ -35,6 +34,8 @@ class _DailyReviewState extends State<DailyReview> {
 }
 
 class buttomBottonsRow extends StatelessWidget {
+  final quoteCard;
+  buttomBottonsRow(this.quoteCard);
   static late TTS tts;
   @override
   Widget build(BuildContext context) {

@@ -26,6 +26,24 @@ class QuoteCard extends StatefulWidget {
 }
 
 class _QuoteCardState extends State<QuoteCard> {
+  void updateQuoteCard(var dxVelocity) {
+    if (dxVelocity < 1) {
+      //next
+      TTS.stop();
+      widget.changeBookAndQuote();
+      if (widget.secondaryStack.isEmpty == true) {
+        widget.mainStack.push(widget.quote);
+      } else {
+        while (widget.secondaryStack.isEmpty == false) {
+          widget.mainStack.push(widget.secondaryStack.pop());
+        }
+      }
+    } else {
+      //prev
+      widget.secondaryStack.push(widget.mainStack.pop());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     widget.quote = widget.mainStack.peek;
@@ -33,21 +51,7 @@ class _QuoteCardState extends State<QuoteCard> {
       child: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {
           setState(() {
-            if (details.velocity.pixelsPerSecond.dx < 1) {
-              //next
-              TTS.stop();
-              widget.changeBookAndQuote();
-              if (widget.secondaryStack.isEmpty == true) {
-                widget.mainStack.push(widget.quote);
-              } else {
-                while (widget.secondaryStack.isEmpty == false) {
-                  widget.mainStack.push(widget.secondaryStack.pop());
-                }
-              }
-            } else {
-              //prev
-              widget.secondaryStack.push(widget.mainStack.pop());
-            }
+            updateQuoteCard(details.velocity.pixelsPerSecond.dx);
           });
         },
         child: Card(
