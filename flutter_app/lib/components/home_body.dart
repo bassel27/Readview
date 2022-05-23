@@ -3,6 +3,8 @@ import '../screens/daily_review_screen.dart';
 import '../others/constants.dart';
 
 class HomeBody extends StatelessWidget {
+  static int red = 150;
+  static int green = 180;
   void updateQuotes() {}
   void favorites() {}
   void browseByTheme() {}
@@ -11,6 +13,11 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      TextField(  //TODO: swipe up ffor search like whatsapp
+        style: TextStyle(color: Colors.black),
+        decoration: kTextFieldInputDecoration,
+        onChanged: (value) {}, 
+      ),
       HomeButton(
           "Daily Review", DailyReview, DailyReview.route, Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', Icons.update),
@@ -21,9 +28,6 @@ class HomeBody extends StatelessWidget {
   }
 }
 
-var red = 150;
-var green = 180;
-
 class HomeButton extends StatelessWidget {
   final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
   final icon;
@@ -33,8 +37,8 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    red -= KSubtractAmount; // TODO: ask Deeb
-    green -= KSubtractAmount;
+    HomeBody.red -= KSubtractAmount; // TODO: ask Deeb
+    HomeBody.green -= KSubtractAmount;
     return Expanded(
         child: ElevatedButton(
       onPressed: () {
@@ -60,7 +64,7 @@ class HomeButton extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         //TODO: button doeesn't resize when screen is smaller
-        primary: Color.fromARGB(255, red, green, 208),
+        primary: Color.fromARGB(255, HomeBody.red, HomeBody.green, 208),
 
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
         elevation: 0,

@@ -1,6 +1,5 @@
-// TODO: stop tts on second tap
 // TODO: card for title and author
-// TODO: pause and play tts
+
 import 'package:flutter/material.dart';
 import '../services/tts.dart';
 import '../components/quote_card.dart';

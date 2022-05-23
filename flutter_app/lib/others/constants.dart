@@ -7,9 +7,11 @@ const kScaffoldColor = Color.fromARGB(255, 111, 122, 174);
 const kDrawerColor = Color.fromARGB(81, 14, 37, 244);
 const kAppbarColor = Color.fromARGB(255, 68, 75, 105);
 const kCardColor = Color.fromARGB(255, 241, 238, 238);
-TextStyle kQuoteTextStyle =
+
+const TextStyle kQuoteTextStyle =
     TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 0.1);
-TextStyle kHomeButtonTextStyle = TextStyle(
+
+const TextStyle kHomeButtonTextStyle = TextStyle(
   fontSize: kSizeFont,
   letterSpacing: 1.5,
 );
@@ -19,3 +21,13 @@ RoundedRectangleBorder kCardRoundedRectangleBorder = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(10),
 );
 
+InputDecoration kTextFieldInputDecoration = InputDecoration(
+  filled: true,
+  fillColor: null,
+  hintText: "🔎 Search",
+  hintStyle: TextStyle(color: Colors.grey),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10.0),
+    borderSide: BorderSide.none,
+  ),
+);

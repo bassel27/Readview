@@ -1,4 +1,8 @@
+// TODO: pause and play tts
+// TODO: stop tts on second tap
+// TODDO: pause when you go to another screen
 import 'package:flutter_tts/flutter_tts.dart';
+
 FlutterTts flutterTts = FlutterTts();
 
 class TTS {
@@ -12,8 +16,8 @@ class TTS {
   }
 
   static stop() async {
-    try{
+    try {
       await flutterTts.stop();
-    }catch(e){}
+    } catch (e) {}
   }
 }

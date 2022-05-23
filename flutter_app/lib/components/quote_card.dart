@@ -27,21 +27,23 @@ class QuoteCard extends StatefulWidget {
 
 class _QuoteCardState extends State<QuoteCard> {
   void updateQuoteCard(var dxVelocity) {
-    if (dxVelocity < 1) {
-      //next
-      TTS.stop();
-      widget.changeBookAndQuote();
-      if (widget.secondaryStack.isEmpty == true) {
-        widget.mainStack.push(widget.quote);
-      } else {
-        while (widget.secondaryStack.isEmpty == false) {
-          widget.mainStack.push(widget.secondaryStack.pop());
+    setState(() {
+      if (dxVelocity < 1) {
+        //next
+        TTS.stop();
+        widget.changeBookAndQuote();
+        if (widget.secondaryStack.isEmpty == true) {
+          widget.mainStack.push(widget.quote);
+        } else {
+          while (widget.secondaryStack.isEmpty == false) {
+            widget.mainStack.push(widget.secondaryStack.pop());
+          }
         }
+      } else {
+        //prev
+        widget.secondaryStack.push(widget.mainStack.pop());
       }
-    } else {
-      //prev
-      widget.secondaryStack.push(widget.mainStack.pop());
-    }
+    });
   }
 
   @override
@@ -50,9 +52,7 @@ class _QuoteCardState extends State<QuoteCard> {
     return Expanded(
       child: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {
-          setState(() {
-            updateQuoteCard(details.velocity.pixelsPerSecond.dx);
-          });
+          updateQuoteCard(details.velocity.pixelsPerSecond.dx);
         },
         child: Card(
           shape:
