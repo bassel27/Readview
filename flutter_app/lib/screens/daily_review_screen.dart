@@ -5,8 +5,16 @@ import '/components/bottom_buttons.dart';
 import '../others/constants.dart';
 import '../components/quoteCardsStack.dart';
 
-class DailyReview extends StatelessWidget {
+class DailyReview extends StatefulWidget {
   static const route = '/dailyReview';
+
+  @override
+  State<DailyReview> createState() => _DailyReviewState();
+}
+
+class _DailyReviewState extends State<DailyReview> {
+  final quoteCardsstack = quoteCardsStack();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,8 +24,8 @@ class DailyReview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            quoteCardsStack(),
-            // bottomButtonsRow(widget.quoteCard),
+            quoteCardsstack,
+            bottomButtonsRow(quoteCardsstack.getCurrentQuote()),
           ],
         ),
       ),

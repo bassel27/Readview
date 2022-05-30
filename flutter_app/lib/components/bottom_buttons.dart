@@ -19,7 +19,7 @@ class bottomButtonsRow extends StatelessWidget {
         SizedBox(width: 10),
         ElevatedButton(
           onPressed: () {
-            tts = TTS(quote);
+            tts = TTS(this.quote);
             tts.speak();
           },
           child: Icon(Icons.hearing),
