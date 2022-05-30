@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import '/components/bottom_buttons.dart';
 import '../others/constants.dart';
-import '/components/tinderCard.dart';
+import '../components/quoteCardsStack.dart';
 
 class DailyReview extends StatelessWidget {
   static const route = '/dailyReview';
