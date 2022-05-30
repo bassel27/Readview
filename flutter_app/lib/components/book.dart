@@ -11,23 +11,22 @@ class Book {
   late List<int> quotesIndexList;
 
   Book({required this.title, required this.author, required this.quotes}) {
-    this.quotesIndexList =
-        shuffle(List<int>.generate(quotes.length, (int index) => index));
+    // this.quotesIndexList =
+    //     shuffle(List<int>.generate(quotes.length, (int index) => index));
   }
 
-  static Book getRandomBook() {
-    return books[Random().nextInt(books.length)];
-  }
+  // static Book getRandomBook() {
+  //   return books[Random().nextInt(books.length)];
+  // }
 
-  String getRandomQuote() {
-    print(quotesIndexList);
-    if (quotesIndexList.length == 0) {
-      print("a7aaaa ${this.title}");
-    }
-    return this.quotes[Random().nextInt(quotes.length)];
-    // return this.quotes[quotesIndexList
-    //     .removeLast()]; //without this?? // TODO: prevent repitition
-  }
+  // String getRandomQuote() {
+  //   if (quotesIndexList.length == 0) {
+  //     print("a7aaaa ${this.title}");
+  //   }
+  //   return this.quotes[Random().nextInt(quotes.length)];
+  //   // return this.quotes[quotesIndexList
+  //   //     .removeLast()]; //without this?? // TODO: prevent repitition
+  // }
 
   static List<Book> getBooks() {
     var tempDict = jsonDecode(
@@ -57,8 +56,8 @@ class Book {
         quotes = [];
       }
     }
-    // for (int i = 0; i < books.length; i++) {
-    //   print("${books[i].title}, ${books[i].author}, ${books[i].quotes}");
+    // for (Book book in books) {
+    //   print("${book.title}, ${book.author}, ${book.quotes}");
     // }
     return books;
   }

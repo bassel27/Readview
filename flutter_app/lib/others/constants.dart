@@ -31,3 +31,5 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
     borderSide: BorderSide.none,
   ),
 );
+
+const kTextFieldTextStyle = TextStyle(color: Colors.black);

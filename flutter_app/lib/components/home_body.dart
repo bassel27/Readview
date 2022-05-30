@@ -13,11 +13,11 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TextField(  //TODO: swipe up ffor search like whatsapp
-        style: TextStyle(color: Colors.black),
-        decoration: kTextFieldInputDecoration,
-        onChanged: (value) {}, 
-      ),
+      // TextField(  //TODO: swipe up ffor search like whatsapp
+      //   style: kTextFieldTextStyle,
+      //   decoration: kTextFieldInputDecoration,
+      //   onChanged: (input) {},
+      // ),
       HomeButton(
           "Daily Review", DailyReview, DailyReview.route, Icons.calendar_month),
       HomeButton("Update Quotes", loadingScreen, '', Icons.update),
