@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
+import 'package:readview_app/services/tts.dart';
 import '../others/constants.dart';
 import 'book.dart';
 
-int index = 0;
-
 class quoteCardsStack extends StatefulWidget {
   List<swipeableQuoteCard> swipeableCards = [];
+  static var index = 0;
+
   quoteCardsStack() {
+    index = 0;
     for (Book book in books) {
       for (String quote in book.quotes) {
         swipeableCards.add(
@@ -17,10 +19,10 @@ class quoteCardsStack extends StatefulWidget {
     }
     swipeableCards.shuffle();
   }
+
   String getCurrentQuote() {
-    String quote = swipeableCards[swipeableCards.length - index - 1].quote;
-    print(quote);
-    return quote;
+    print(index);
+    return swipeableCards[swipeableCards.length - index - 1].quote;
   }
 
   @override
@@ -43,17 +45,15 @@ class swipeableQuoteCard extends StatelessWidget {
   final quote;
   final author;
   final title;
-
-  swipeableQuoteCard(this.title, this.author, this.quote) {
-    index = 0;
-  }
+  swipeableQuoteCard(this.title, this.author, this.quote);
 
   @override
   Widget build(BuildContext context) {
     return Swipable(
+      verticalSwipe: false,
       onSwipeEnd: (position, details) {
-        index++;
-        print(index);
+        quoteCardsStack.index++;
+        TTS.stop(); //TODO: await??
       },
       child: Card(
         child: Center(

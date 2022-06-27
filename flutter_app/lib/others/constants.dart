@@ -7,6 +7,8 @@ const kScaffoldColor = Color.fromARGB(255, 111, 122, 174);
 const kDrawerColor = Color.fromARGB(81, 14, 37, 244);
 const kAppbarColor = Color.fromARGB(255, 68, 75, 105);
 const kCardColor = Color.fromARGB(255, 241, 238, 238);
+const int kInitialRedValue = 170;
+const kInitialGreenValue = 200;
 
 const TextStyle kQuoteTextStyle =
     TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 0.1);
@@ -22,14 +24,14 @@ RoundedRectangleBorder kCardRoundedRectangleBorder = RoundedRectangleBorder(
 );
 
 InputDecoration kTextFieldInputDecoration = InputDecoration(
-  filled: true,
-  fillColor: null,
-  hintText: "🔎 Search",
-  hintStyle: TextStyle(color: Colors.grey),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10.0),
-    borderSide: BorderSide.none,
+  prefixIcon: Icon(
+    Icons.search,
+    color: Colors.white,
   ),
+  filled: true,
+  fillColor: kAppbarColor,
+  hintText: "Search for a book, author or quote",
+  hintStyle: TextStyle(color: Colors.white),
 );
 
 const kTextFieldTextStyle = TextStyle(color: Colors.black);

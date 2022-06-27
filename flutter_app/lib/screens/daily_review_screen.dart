@@ -25,7 +25,7 @@ class _DailyReviewState extends State<DailyReview> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             quoteCardsstack,
-            bottomButtonsRow(quoteCardsstack.getCurrentQuote()),
+            bottomButtonsRow(quoteCardsstack),
           ],
         ),
       ),

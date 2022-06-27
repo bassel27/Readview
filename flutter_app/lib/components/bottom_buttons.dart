@@ -1,12 +1,13 @@
 // This class is for the dialy_review_screen
+import 'package:readview_app/components/quoteCardsStack.dart';
+
 import '../services/tts.dart';
 import 'package:flutter/material.dart';
 
-
 class bottomButtonsRow extends StatelessWidget {
-  final quote;
-  bottomButtonsRow(this.quote);
-  static late TTS tts;
+  final quoteCardsStackInstance;
+  bottomButtonsRow(this.quoteCardsStackInstance);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,8 +20,13 @@ class bottomButtonsRow extends StatelessWidget {
         SizedBox(width: 10),
         ElevatedButton(
           onPressed: () {
-            tts = TTS(this.quote);
-            tts.speak();
+            print(TTS.isSpeaking);
+            if (TTS.isSpeaking == true) {
+              TTS.stop();
+            } else {
+              TTS tts = TTS(quoteCardsStackInstance.getCurrentQuote());
+              tts.speak();
+            }
           },
           child: Icon(Icons.hearing),
         ),
