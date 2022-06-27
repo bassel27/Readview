@@ -4,10 +4,15 @@ import 'package:readview_app/components/quoteCardsStack.dart';
 import '../services/tts.dart';
 import 'package:flutter/material.dart';
 
-class bottomButtonsRow extends StatelessWidget {
+class bottomButtonsRow extends StatefulWidget {
   final quoteCardsStackInstance;
   bottomButtonsRow(this.quoteCardsStackInstance);
+  IconData ttsIcon = Icons.hearing;
+  @override
+  State<bottomButtonsRow> createState() => _bottomButtonsRowState();
+}
 
+class _bottomButtonsRowState extends State<bottomButtonsRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,15 +25,18 @@ class bottomButtonsRow extends StatelessWidget {
         SizedBox(width: 10),
         ElevatedButton(
           onPressed: () {
-            print(TTS.isSpeaking);
-            if (TTS.isSpeaking == true) {
-              TTS.stop();
-            } else {
-              TTS tts = TTS(quoteCardsStackInstance.getCurrentQuote());
-              tts.speak();
-            }
+            setState(() {
+              if (TTS.isSpeaking == true) {
+                TTS.stop();
+                widget.ttsIcon = Icons.hearing;
+              } else {
+                TTS tts = TTS(widget.quoteCardsStackInstance.getCurrentQuote());
+                tts.speak();
+                widget.ttsIcon = Icons.stop;
+              }
+            });
           },
-          child: Icon(Icons.hearing),
+          child: Icon(widget.ttsIcon),
         ),
         SizedBox(width: 10),
         ElevatedButton(

@@ -1,24 +1,30 @@
 // TODO: pause and play tts
-// TODO: stop tts on second tap
+// TODO: on changing quote 
 import 'package:flutter_tts/flutter_tts.dart';
 
+enum TtsState { playing, stopped, paused, continued }
 FlutterTts flutterTts = FlutterTts();
 
 class TTS {
+  static bool isSpeaking = false;
+  final text;
+  TtsState ttsState = TtsState.stopped;
+
+  TTS(this.text);
+
   static Future<void> stop() async {
     try {
       await flutterTts.stop();
+      isSpeaking = false;
     } catch (e) {}
   }
 
-  static bool isSpeaking = false;
-  final text;
-  TTS(this.text);
   void speak() async {
     isSpeaking = true;
+    await flutterTts.awaitSpeakCompletion(true);
     await flutterTts.setPitch(1.0);
     await flutterTts.setLanguage("en-US");
-    flutterTts.speak(this.text);
+    await flutterTts.speak(this.text);
     isSpeaking = false;
   }
 }
