@@ -5,3 +5,4 @@ flutter_app/*
 __pycache__
 flask_env
 shit.py
+/node_modules

@@ -50,7 +50,7 @@ def search_by_title(title: str):
     return book_dict
 
 
-@app.get("/  search-by-author")
+@app.get("/search-by-author")
 def search_by_author(author: str):
     """Searches by author"""
     book_dict = {}
@@ -60,3 +60,12 @@ def search_by_author(author: str):
             book_dict[c] = value_dict
             c += 1
     return book_dict
+
+@app.get("/search-by-id")
+def search_by_id(id: int):
+    """Searches by id"""
+    c = 0
+    for index, book_dict in dict.items():
+        if index == id:
+            return book_dict
+    
