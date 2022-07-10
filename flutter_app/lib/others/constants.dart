@@ -9,6 +9,7 @@ const kAppbarColor = Color.fromARGB(255, 68, 75, 105);
 const kCardColor = Color.fromARGB(255, 241, 238, 238);
 const int kInitialRedValue = 170;
 const kInitialGreenValue = 200;
+const kLoadingScreenColor = Color.fromARGB(255, 139, 207, 238);
 
 const TextStyle kQuoteTextStyle =
     TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 0.1);
@@ -24,6 +25,12 @@ RoundedRectangleBorder kCardRoundedRectangleBorder = RoundedRectangleBorder(
 );
 
 InputDecoration kTextFieldInputDecoration = InputDecoration(
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.zero,
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.zero,
+  ),
   prefixIcon: Icon(
     Icons.search,
     color: Colors.white,
@@ -34,4 +41,4 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
   hintStyle: TextStyle(color: Colors.white),
 );
 
-const kTextFieldTextStyle = TextStyle(color: Colors.black);
+const kTextFieldTextStyle = TextStyle(color: Colors.white);

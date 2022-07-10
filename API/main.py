@@ -1,23 +1,21 @@
-from fastapi import FastAPI, Path
-import CSV
+from fastapi import FastAPI
+from constants import *
 import json
 
-dict = {}
-for i, line in enumerate(CSV.csv_reader):
-    dict[i] = line
+dict ={}
+with open('result.json') as f_in:
+    dict = json.load(f_in)
 
 app = FastAPI()
 
-
 @app.get("/")  # right above the line below
 def home():
-    """gets everything"""
+    """Gets everything"""
     return dict  # return dic
-
 
 @app.get("/get-books")
 def get_books():
-    """gets the titles of all books"""
+    """Gets the titles of all books"""
     c=0
     books_dict = {}
     for value_dict in dict.values():
@@ -29,7 +27,7 @@ def get_books():
 
 @app.get("/get-authors")
 def get_authors():
-    """gets author names"""
+    """Gets author names"""
     c=0
     authors_dict = {}
     for value_dict in dict.values():
@@ -48,7 +46,6 @@ def search_by_title(title: str):
             book_dict[c] = value_dict
             c += 1
     return book_dict
-
 
 @app.get("/search-by-author")
 def search_by_author(author: str):

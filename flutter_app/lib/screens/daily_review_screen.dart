@@ -6,8 +6,9 @@ import '../others/constants.dart';
 import '../components/quoteCardsStack.dart';
 
 class DailyReview extends StatefulWidget {
-  static const route = '/dailyReview';
-
+  static const route =
+      '/loadingScreen/dailyReview'; // so you can't change it by mistake
+  
   @override
   State<DailyReview> createState() => _DailyReviewState();
 }

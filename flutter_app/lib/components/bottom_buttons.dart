@@ -1,6 +1,4 @@
 // This class is for the dialy_review_screen
-import 'package:readview_app/components/quoteCardsStack.dart';
-
 import '../services/tts.dart';
 import 'package:flutter/material.dart';
 

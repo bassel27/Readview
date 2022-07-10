@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:readview_app/services/tts.dart';
 import '../others/constants.dart';
 import 'book.dart';
+import '/screens/loading_screen.dart';
+import '/others/globals.dart';
 
 class quoteCardsStack extends StatefulWidget {
   List<swipeableQuoteCard> swipeableCards = [];
@@ -41,11 +44,34 @@ class _quoteCardsStackState extends State<quoteCardsStack> {
   }
 }
 
-class swipeableQuoteCard extends StatelessWidget {
+class swipeableQuoteCard extends StatefulWidget {
   final quote;
   final author;
   final title;
   swipeableQuoteCard(this.title, this.author, this.quote);
+
+  @override
+  State<swipeableQuoteCard> createState() => _swipeableQuoteCardState();
+}
+
+class _swipeableQuoteCardState extends State<swipeableQuoteCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        duration: Duration(seconds: 2),
+        vsync:
+            this); // this class acts like a ticker (required in vsync)  // this means reference the object of this class
+    controller.forward(); // form 0 to 1 in default
+
+    controller.addListener(() {
+      setState(() {});
+      // print(controller.value);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +81,17 @@ class swipeableQuoteCard extends StatelessWidget {
         quoteCardsStack.index++;
         TTS.stop(); //TODO: await??
       },
-      child: Card(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Text(
-                quote,
-                style: kQuoteTextStyle,
+      child: Container(
+        height: controller.value * 1000,
+        child: Card(
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                child: Text(
+                  widget.quote,
+                  style: kQuoteTextStyle,
+                ),
               ),
             ),
           ),

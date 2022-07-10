@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/daily_review_screen.dart';
+import 'package:readview_app/screens/loading_screen.dart';
 import '../others/constants.dart';
 
 class HomeBody extends StatefulWidget {
@@ -42,7 +42,7 @@ class _HomeBodyState extends State<HomeBody> {
         Visibility(
           visible: widget.isSearchVisisble,
           child: TextField(
-            //TODO: swipe up ffor search like whatsapp
+            //TODO: swipe up for search like whatsapp
             style: kTextFieldTextStyle,
             decoration: kTextFieldInputDecoration,
             onChanged: (input) {},
@@ -50,8 +50,8 @@ class _HomeBodyState extends State<HomeBody> {
         ),
         HomeButton(
             text: "Daily Review",
-            onPressed: DailyReview,
-            route: DailyReview.route,
+            onPressed: LoadingScreen,
+            route: LoadingScreen.route,
             icon: Icons.calendar_month,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),

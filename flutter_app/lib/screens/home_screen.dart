@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../others/constants.dart';
 import '../components/home_body.dart';
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
+  static const String route = "/";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

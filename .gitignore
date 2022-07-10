@@ -6,3 +6,7 @@ __pycache__
 flask_env
 shit.py
 /node_modules
+runtime.txt
+requirement.txt
+Procfile
+__init__.py

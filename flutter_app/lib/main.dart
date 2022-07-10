@@ -7,12 +7,12 @@ import 'screens/loading_screen.dart';
 void main() {
   runApp(
     MaterialApp(
-      initialRoute: '/',
+      initialRoute: HomeScreen.route,
       routes: {
-        '/': (context) =>
-            Home(), // context: find a widget in the OVERALL widget tree
-        '/dailyReview': (context) => DailyReview(),
-        '/loadingScreen': (context) => loadingScreen(),
+        HomeScreen.route: (context) =>
+            HomeScreen(), // context: find a widget in the OVERALL widget tree
+        DailyReview.route: (context) => DailyReview(),
+        LoadingScreen.route: (context) => LoadingScreen(),
       },
     ),
   );
