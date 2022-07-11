@@ -34,9 +34,10 @@ class _QuoteCardsStackState extends State<QuoteCardsStack> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-          child: Stack(
-        children: widget.swipeableCards,
-      )),
+        child: Stack(
+          children: widget.swipeableCards,
+        ),
+      ),
     );
   }
 }

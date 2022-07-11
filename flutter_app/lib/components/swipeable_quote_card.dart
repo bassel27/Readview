@@ -3,6 +3,7 @@ import 'package:flutter_swipable/flutter_swipable.dart';
 import 'package:readview_app/services/tts.dart';
 import '../others/constants.dart';
 import 'quote_cards_stack.dart';
+import 'info_card.dart';
 
 class SwipeableQuoteCard extends StatefulWidget {
   final quote;
@@ -42,16 +43,28 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
         TTS.stop(); //TODO: await??
       },
       child: Container(
-        height: controller.value * 1000,
+        // height: controller.value * 1000,
         child: Card(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.all(20),
-              child: SingleChildScrollView(
-                child: Text(
-                  widget.quote,
-                  style: kQuoteTextStyle,
-                ),
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Container(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            widget.quote,
+                            style: kQuoteTextStyle,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment.centerLeft, child: InfoCard()),
+                ],
               ),
             ),
           ),

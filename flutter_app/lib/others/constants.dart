@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kSizeFont = 25.0;
-const kSizeIcon = 30.0;
+const kIconSize = 30.0;
 const KSubtractAmount = 20;
 const kScaffoldColor = Color.fromARGB(255, 111, 122, 174);
 const kDrawerColor = Color.fromARGB(81, 14, 37, 244);
@@ -42,3 +42,4 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
 );
 
 const kTextFieldTextStyle = TextStyle(color: Colors.white);
+

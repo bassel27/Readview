@@ -17,7 +17,7 @@ class _bottomButtonsRowState extends State<bottomButtonsRow> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () { },
           child: Icon(Icons.favorite),
         ),
         SizedBox(width: 10),
