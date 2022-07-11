@@ -3,18 +3,18 @@
 import 'package:flutter/material.dart';
 import '/components/bottom_buttons.dart';
 import '../others/constants.dart';
-import '../components/quoteCardsStack.dart';
+import '../components/quote_cards_stack.dart';
 
 class DailyReview extends StatefulWidget {
   static const route =
       '/loadingScreen/dailyReview'; // so you can't change it by mistake
-  
+
   @override
   State<DailyReview> createState() => _DailyReviewState();
 }
 
 class _DailyReviewState extends State<DailyReview> {
-  final quoteCardsstack = quoteCardsStack();
+  final quoteCardsstack = QuoteCardsStack();
 
   @override
   Widget build(BuildContext context) {

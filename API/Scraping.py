@@ -1,7 +1,3 @@
-import threading
-from audioop import add
-from turtle import title
-from numpy import column_stack
 from pyparsing import col
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,12 +11,8 @@ from selenium.common.exceptions import *
 import platform
 from selenium.webdriver.common.keys import Keys
 
-
-# TODO: change file name to scraping.py
 # TODO: empty page (no author, no title, no nothing)
-# TODO: empty author or empty title
-# TODO: arabic quotes
-# TODO: non-ascii characters
+# TODO: empty author or empty title or empty quote
 
 
 class Scraping:
@@ -34,13 +26,12 @@ class Scraping:
 
     def create_driver(self):
         chrome_options = webdriver.ChromeOptions()
-        # chrome_options.add_argument("--disable-dev-sh-usage")
-        chrome_options.add_argument("--no-sandbox")
+        
+        for option in OPTIONS:
+            chrome_options.add_argument(option)
         if platform.system() != "Windows":
             chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--window-size=1920,1080")
+
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         self.driver = webdriver.Chrome(
             ChromeDriverManager().install(),
@@ -53,7 +44,7 @@ class Scraping:
 
     def fetch_notion_old(self):
         self.driver.get(
-            "https://sumptuous-salesman-ca6.notion.site/cb2ea32652c144bc9f56d03c6a5456f7?v=bf7a0255deae406986f1e80ddb854b09"
+            "https://sumptuous-salesman-ca6.notion.site/bf68366a212e45e1ae9bee853867c225?v=85ee9cedeb5a44c994e49033053f593b"
         )
 
     def get_books_elements(self):
@@ -309,7 +300,11 @@ class Scraping:
             time.sleep(0.1)
     
     
-
+# import json
+# scraping_take = Scraping(EMAIL, PASSWORD)
+# dict = scraping_take.get_books()
+# with open('result.json', 'w', encoding='utf8') as json_file:
+#     json.dump(dict, json_file, ensure_ascii=False)
 
 # scraping_create = Scraping(EMAIL, PASSWORD)
 # scraping_take = Scraping(EMAIL, PASSWORD)

@@ -13,7 +13,7 @@ class Book {
     http.Response response =
         await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
 
-    var tempDict = jsonDecode(response.body);
+    var tempDict = json.decode(Utf8Decoder().convert(response.bodyBytes));
     // try {
     //   http.Response response =
     //       await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
