@@ -42,3 +42,34 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
 );
 
 const kTextFieldTextStyle = TextStyle(color: Colors.white);
+
+
+
+
+// final mainStack = QuotesStack<String>();
+  // QuoteCard() {
+  //   mainStack.push(quote);
+  // }
+  // final secondaryStack = QuotesStack<String>();
+  // String getCurrentQuote() {
+  //   return quote;
+  // }
+    // void updateQuoteCard(bool isNext) {
+  //   setState(() {
+  //     if (isNext == true) {
+  //       //next
+  //       TTS.stop();
+  //       widget.changeBookAndQuote();
+  //       if (widget.secondaryStack.isEmpty == true) {
+  //         widget.mainStack.push(widget.quote);
+  //       } else {
+  //         while (widget.secondaryStack.isEmpty == false) {
+  //           widget.mainStack.push(widget.secondaryStack.pop());
+  //         }
+  //       }
+  //     } else {
+  //       //prev
+  //       widget.secondaryStack.push(widget.mainStack.pop());
+  //     }
+  //   });
+  // }

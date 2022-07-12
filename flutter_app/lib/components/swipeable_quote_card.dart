@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swipable/flutter_swipable.dart';
-import 'package:readview_app/services/tts.dart';
 import '../others/constants.dart';
-import 'quote_cards_stack.dart';
 import 'info_card.dart';
 
 class SwipeableQuoteCard extends StatefulWidget {
@@ -17,7 +14,7 @@ class SwipeableQuoteCard extends StatefulWidget {
 
 class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
     with SingleTickerProviderStateMixin {
-  late AnimationController controller;
+  // late AnimationController controller;
 
   // @override
   // void initState() {
@@ -36,35 +33,39 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
 
   @override
   Widget build(BuildContext context) {
-    return Swipable(
-      verticalSwipe: false,
-      onSwipeEnd: (position, details) {
-        QuoteCardsStack.index++;
-        TTS.stop(); //TODO: await??
-      },
-      child: Container(
-        // height: controller.value * 1000,
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: SingleChildScrollView(
-                      child: Text(
-                        widget.quote,
-                        style: kQuoteTextStyle,
-                      ),
-                    ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.white,
+        border: Border.all(color: Colors.grey, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 118, 113, 113),
+            blurRadius: 4,
+            offset: Offset(2, 2), // Shadow position
+          ),
+        ],
+      ),
+
+      // height: controller.value * 1000,
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Text(
+                    widget.quote,
+                    style: kQuoteTextStyle,
                   ),
                 ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: InfoCard(widget.title, widget.author))
-              ],
+              ),
             ),
-          ),
+            Align(
+                alignment: Alignment.centerRight,
+                child: InfoCard(widget.title, widget.author))
+          ],
         ),
       ),
     );

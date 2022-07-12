@@ -3,6 +3,9 @@ import 'package:readview_app/components/swipeable_quote_card.dart';
 import 'book.dart';
 import '/others/globals.dart';
 import 'swipeable_quote_card.dart';
+import 'package:appinio_swiper/appinio_swiper.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:readview_app/services/tts.dart';
 
 class QuoteCardsStack extends StatefulWidget {
   final List<SwipeableQuoteCard> swipeableCards = [];
@@ -33,42 +36,14 @@ class _QuoteCardsStackState extends State<QuoteCardsStack> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        child: Stack(
-          children: widget.swipeableCards,
-        ),
+      child: AppinioSwiper(
+        padding: EdgeInsets.fromLTRB(6, 6, 6, 15),
+        cards: widget.swipeableCards,
+        duration: Duration(milliseconds: 160),
+        onSwipe: (index) {
+          TTS.stop(); //TODO: await??
+        },
       ),
     );
   }
 }
-
-
-
-
-// final mainStack = QuotesStack<String>();
-  // QuoteCard() {
-  //   mainStack.push(quote);
-  // }
-  // final secondaryStack = QuotesStack<String>();
-  // String getCurrentQuote() {
-  //   return quote;
-  // }
-    // void updateQuoteCard(bool isNext) {
-  //   setState(() {
-  //     if (isNext == true) {
-  //       //next
-  //       TTS.stop();
-  //       widget.changeBookAndQuote();
-  //       if (widget.secondaryStack.isEmpty == true) {
-  //         widget.mainStack.push(widget.quote);
-  //       } else {
-  //         while (widget.secondaryStack.isEmpty == false) {
-  //           widget.mainStack.push(widget.secondaryStack.pop());
-  //         }
-  //       }
-  //     } else {
-  //       //prev
-  //       widget.secondaryStack.push(widget.mainStack.pop());
-  //     }
-  //   });
-  // }
