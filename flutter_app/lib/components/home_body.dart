@@ -3,14 +3,15 @@ import 'package:readview_app/screens/loading_screen.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
 
-class HomeBody extends StatefulWidget {
 
+class HomeBody extends StatefulWidget {
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
 
 class _HomeBodyState extends State<HomeBody> {
   bool isSearchVisisble = false;
+
   void updateQuotes() {}
 
   void favorites() {}

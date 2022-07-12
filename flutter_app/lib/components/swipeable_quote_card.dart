@@ -37,44 +37,31 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
   @override
   Widget build(BuildContext context) {
     return Swipable(
-      verticalSwipe: true,
+      verticalSwipe: false,
       onSwipeEnd: (position, details) {
         QuoteCardsStack.index++;
         TTS.stop(); //TODO: await??
       },
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.7),
-            width: 2,
-          ),
-        ),
-        elevation: 1,
-        child: Container(
-          height: controller.value * 1000,
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Container(
-                        child: SingleChildScrollView(
-                          child: Text(
-                            widget.quote,
-                            style: kQuoteTextStyle,
-                          ),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          widget.quote,
+                          style: kQuoteTextStyle,
                         ),
                       ),
                     ),
                   ),
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: InfoCard(widget.title, widget.author)),
-                ],
-              ),
+                ),
+                InfoCard(widget.title, widget.author),
+              ],
             ),
           ),
         ),
