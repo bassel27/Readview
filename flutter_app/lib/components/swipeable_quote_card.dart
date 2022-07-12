@@ -42,9 +42,17 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
         QuoteCardsStack.index++;
         TTS.stop(); //TODO: await??
       },
-      child: Container(
-        // height: controller.value * 1000,
-        child: Card(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: Colors.grey.withOpacity(0.7),
+            width: 2,
+          ),
+        ),
+        elevation: 1,
+        child: Container(
+          height: controller.value * 1000,
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
