@@ -19,20 +19,20 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(
-        duration: Duration(seconds: 2),
-        vsync:
-            this); // this class acts like a ticker (required in vsync)  // this means reference the object of this class
-    controller.forward(); // form 0 to 1 in default
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   controller = AnimationController(
+  //       duration: Duration(seconds: 2),
+  //       vsync:
+  //           this); // this class acts like a ticker (required in vsync)  // this means reference the object of this class
+  //   controller.forward(); // form 0 to 1 in default
 
-    controller.addListener(() {
-      setState(() {});
-      // print(controller.value);
-    });
-  }
+  //   controller.addListener(() {
+  //     setState(() {});
+  //     // print(controller.value);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +42,26 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
         QuoteCardsStack.index++;
         TTS.stop(); //TODO: await??
       },
-      child: Card(
-        child: Center(
+      child: Container(
+        // height: controller.value * 1000,
+        child: Card(
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
                 Expanded(
                   child: Center(
-                    child: Container(
-                      child: SingleChildScrollView(
-                        child: Text(
-                          widget.quote,
-                          style: kQuoteTextStyle,
-                        ),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        widget.quote,
+                        style: kQuoteTextStyle,
                       ),
                     ),
                   ),
                 ),
-                InfoCard(widget.title, widget.author),
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: InfoCard(widget.title, widget.author))
               ],
             ),
           ),

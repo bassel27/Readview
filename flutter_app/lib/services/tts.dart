@@ -1,5 +1,5 @@
-// TODO: pause and play tts
-// TODO: on changing quote
+// TODO: pause and play tts on changing quote
+// TODO: arabic quotes
 import 'package:flutter_tts/flutter_tts.dart';
 
 enum TtsState { playing, stopped, paused, continued }
