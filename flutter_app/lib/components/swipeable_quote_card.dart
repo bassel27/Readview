@@ -37,7 +37,7 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
   @override
   Widget build(BuildContext context) {
     return Swipable(
-      verticalSwipe: false,
+      verticalSwipe: true,
       onSwipeEnd: (position, details) {
         QuoteCardsStack.index++;
         TTS.stop(); //TODO: await??
@@ -62,8 +62,7 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
                       ),
                     ),
                   ),
-                  Align(
-                      alignment: Alignment.centerLeft, child: InfoCard()),
+                  Align(alignment: Alignment.centerRight, child: InfoCard(widget.title, widget.author)),
                 ],
               ),
             ),

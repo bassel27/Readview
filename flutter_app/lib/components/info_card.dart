@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
+  String title;
+  String author;
+
+  InfoCard(this.title, this.author);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +15,6 @@ class InfoCard extends StatelessWidget {
           BoxShadow(
             color: Colors.black,
             blurRadius: 4.0,
-
             offset: Offset(2.0, 2.0), // shadow direction: bottom right
           )
         ],
@@ -20,9 +23,12 @@ class InfoCard extends StatelessWidget {
       child: Padding(
           padding: EdgeInsets.all(5),
           child: Text(
-            "Title, Author",
+            "${this.title}, ${this.author}",
             style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+              color: Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
           )),
       // color: Colors.blue,
     );
