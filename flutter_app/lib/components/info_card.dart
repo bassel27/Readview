@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '/others/constants.dart';
 
 class InfoCard extends StatelessWidget {
-  String title;
-  String author;
+  final String title;
+  final String author;
 
   InfoCard(this.title, this.author);
   @override
@@ -21,15 +22,16 @@ class InfoCard extends StatelessWidget {
       ),
       margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
       child: Padding(
-          padding: EdgeInsets.all(5),
-          child: Text(
-            "${this.title}, ${this.author}",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-          )),
+        padding: EdgeInsets.all(5),
+        child: Text(
+          "${this.title}, ${this.author}",
+          style: kQuoteTextStyle.copyWith(
+            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
       // color: Colors.blue,
     );
   }

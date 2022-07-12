@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const kSizeFont = 25.0;
 const kIconSize = 30.0;
@@ -11,8 +12,7 @@ const int kInitialRedValue = 170;
 const kInitialGreenValue = 200;
 const kLoadingScreenColor = Color.fromARGB(255, 139, 207, 238);
 
-const TextStyle kQuoteTextStyle =
-    TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 0.1);
+var kQuoteTextStyle = GoogleFonts.oswald(textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w400, letterSpacing: 0.1));
 
 const TextStyle kHomeButtonTextStyle = TextStyle(
   fontSize: kSizeFont,
@@ -42,4 +42,3 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
 );
 
 const kTextFieldTextStyle = TextStyle(color: Colors.white);
-

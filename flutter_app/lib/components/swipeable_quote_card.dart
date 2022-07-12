@@ -47,7 +47,7 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
         child: Card(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               child: Column(
                 children: [
                   Expanded(
@@ -62,7 +62,9 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
                       ),
                     ),
                   ),
-                  Align(alignment: Alignment.centerRight, child: InfoCard(widget.title, widget.author)),
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: InfoCard(widget.title, widget.author)),
                 ],
               ),
             ),

@@ -5,7 +5,7 @@ import '/others/globals.dart';
 import 'swipeable_quote_card.dart';
 
 class QuoteCardsStack extends StatefulWidget {
-  List<SwipeableQuoteCard> swipeableCards = [];
+  final List<SwipeableQuoteCard> swipeableCards = [];
   static var index = 0;
 
   QuoteCardsStack() {

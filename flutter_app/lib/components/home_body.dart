@@ -4,13 +4,13 @@ import '../others/constants.dart';
 import 'home_button.dart';
 
 class HomeBody extends StatefulWidget {
-  bool isSearchVisisble = false;
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  bool isSearchVisisble = false;
   void updateQuotes() {}
 
   void favorites() {}
@@ -30,18 +30,18 @@ class _HomeBodyState extends State<HomeBody> {
         setState(() {
           // Swiping upwards  direction.
           if (details.delta.dy > 0) {
-            widget.isSearchVisisble = true;
+            isSearchVisisble = true;
           }
 
           // Swiping downwards.
           if (details.delta.dy < 0) {
-            widget.isSearchVisisble = false;
+            isSearchVisisble = false;
           }
         });
       },
       child: Column(children: [
         Visibility(
-          visible: widget.isSearchVisisble,
+          visible: isSearchVisisble,
           child: TextField(
             style: kTextFieldTextStyle,
             decoration: kTextFieldInputDecoration,

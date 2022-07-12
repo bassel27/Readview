@@ -5,36 +5,36 @@ import 'package:flutter/material.dart';
 class bottomButtonsRow extends StatefulWidget {
   final quoteCardsStackInstance;
   bottomButtonsRow(this.quoteCardsStackInstance);
-  IconData ttsIcon = Icons.hearing;
   @override
   State<bottomButtonsRow> createState() => _bottomButtonsRowState();
 }
 
 class _bottomButtonsRowState extends State<bottomButtonsRow> {
+  IconData ttsIcon = Icons.volume_up;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () { },
+          onPressed: () {},
           child: Icon(Icons.favorite),
         ),
         SizedBox(width: 10),
         ElevatedButton(
           onPressed: () {
             setState(() {
-              if (TTS.isSpeaking == true) {
+              if (TTS.isSpeaking) {
                 TTS.stop();
-                widget.ttsIcon = Icons.hearing;
+                ttsIcon = Icons.volume_up;
               } else {
                 TTS tts = TTS(widget.quoteCardsStackInstance.getCurrentQuote());
                 tts.speak();
-                widget.ttsIcon = Icons.stop;
+                ttsIcon = Icons.volume_off;
               }
             });
           },
-          child: Icon(widget.ttsIcon),
+          child: Icon(ttsIcon),
         ),
         SizedBox(width: 10),
         ElevatedButton(
