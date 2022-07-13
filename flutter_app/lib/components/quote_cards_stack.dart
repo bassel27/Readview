@@ -51,7 +51,7 @@ class QuoteCardsStack extends StatelessWidget {
       child: AppinioSwiper(
         padding: EdgeInsets.fromLTRB(6, 6, 6, 15),
         cards: swipeableCards,
-        duration: Duration(milliseconds: 160),
+        duration: Duration(milliseconds: 150),
         onSwipe: (index) {
           Provider.of<TTS>(context, listen: false).stop(); //TODO: await??
         },

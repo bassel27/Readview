@@ -1,5 +1,3 @@
-// TODO: card for title and author
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/components/bottom_buttons.dart';

@@ -1,5 +1,3 @@
-// TODO: pause and play tts on changing quote
-// TODO: arabic quotes
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -22,10 +20,8 @@ class TTS extends ChangeNotifier {
     notifyListeners();
     await flutterTts.awaitSpeakCompletion(true);
     await flutterTts.setPitch(1.0);
-    await flutterTts.setLanguage("en-US");
     await flutterTts.speak(text);
     this.isSpeaking = false;
     notifyListeners();
   }
-  
 }

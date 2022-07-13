@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class bottomButtonsRow extends StatelessWidget {
+  // TODO: use provider
   final quoteCardsStackInstance;
   bottomButtonsRow(this.quoteCardsStackInstance);
 
