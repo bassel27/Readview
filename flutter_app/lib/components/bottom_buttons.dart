@@ -1,18 +1,17 @@
 // This class is for the dialy_review_screen
 import '../services/tts.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class bottomButtonsRow extends StatefulWidget {
+class bottomButtonsRow extends StatelessWidget {
   final quoteCardsStackInstance;
   bottomButtonsRow(this.quoteCardsStackInstance);
-  @override
-  State<bottomButtonsRow> createState() => _bottomButtonsRowState();
-}
 
-class _bottomButtonsRowState extends State<bottomButtonsRow> {
-  IconData ttsIcon = Icons.volume_up;
   @override
   Widget build(BuildContext context) {
+    final IconData ttsIcon = !Provider.of<TTS>(context).isSpeaking
+        ? Icons.volume_up
+        : Icons.volume_off;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -23,16 +22,15 @@ class _bottomButtonsRowState extends State<bottomButtonsRow> {
         SizedBox(width: 10),
         ElevatedButton(
           onPressed: () {
-            setState(() {
-              if (TTS.isSpeaking) {
-                TTS.stop();
-                ttsIcon = Icons.volume_up;
-              } else {
-                TTS tts = TTS(widget.quoteCardsStackInstance.getCurrentQuote());
-                tts.speak();
-                ttsIcon = Icons.volume_off;
-              }
-            });
+            // setState(() {
+            if (Provider.of<TTS>(context, listen: false).isSpeaking) {
+              Provider.of<TTS>(context, listen: false).stop();
+            } else {
+              Provider.of<TTS>(context, listen: false).speak(
+                quoteCardsStackInstance.getCurrentQuote(),
+              );
+            }
+            // });
           },
           child: Icon(ttsIcon),
         ),

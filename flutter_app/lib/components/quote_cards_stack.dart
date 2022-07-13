@@ -6,7 +6,7 @@ import 'swipeable_quote_card.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:readview_app/services/tts.dart';
-
+import 'package:provider/provider.dart';
 // Note that this package removes last element form the array with each swipe
 
 class QuoteCardsStack extends StatelessWidget {
@@ -53,7 +53,7 @@ class QuoteCardsStack extends StatelessWidget {
         cards: swipeableCards,
         duration: Duration(milliseconds: 160),
         onSwipe: (index) {
-          TTS.stop(); //TODO: await??
+          Provider.of<TTS>(context, listen: false).stop(); //TODO: await??
         },
       ),
     );
