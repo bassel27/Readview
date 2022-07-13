@@ -1,2 +1,2 @@
-import '/components/book.dart';
+import '../models/book.dart';
 List<Book> books = [];

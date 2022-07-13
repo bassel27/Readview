@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:readview_app/screens/browse_books_screen.dart';
 import 'package:readview_app/screens/loading_screen.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
-
 
 class HomeBody extends StatefulWidget {
   @override
@@ -51,36 +51,31 @@ class _HomeBodyState extends State<HomeBody> {
         ),
         HomeButton(
             text: "Daily Review",
-            onPressed: LoadingScreen,
             route: LoadingScreen.route,
             icon: Icons.calendar_month,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),
         HomeButton(
             text: "Update Quotes",
-            onPressed: loadingScreen,
             route: '',
             icon: Icons.update,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),
         HomeButton(
             text: "Favorites",
-            onPressed: favorites,
             route: '',
             icon: Icons.favorite,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),
         HomeButton(
             text: "Browse by Theme",
-            onPressed: browseByTheme,
             route: '',
             icon: Icons.theater_comedy,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),
         HomeButton(
             text: "Browse by Book",
-            onPressed: browseByBook,
-            route: '',
+            route: BrowseBooksScreen.route,
             icon: Icons.book,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),

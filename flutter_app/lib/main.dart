@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/daily_review_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/loading_screen.dart';
+import 'screens/browse_books_screen.dart';
 
 void main() {
   runApp(
@@ -13,6 +14,7 @@ void main() {
             HomeScreen(), // context: find a widget in the OVERALL widget tree
         DailyReview.route: (context) => DailyReview(),
         LoadingScreen.route: (context) => LoadingScreen(),
+        BrowseBooksScreen.route: (context) => BrowseBooksScreen([]),
       },
     ),
   );

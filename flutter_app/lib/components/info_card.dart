@@ -14,7 +14,7 @@ class InfoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black,
+            color: Colors.black.withOpacity(0.7),
             blurRadius: 4.0,
             offset: Offset(2.0, 2.0), // shadow direction: bottom right
           )

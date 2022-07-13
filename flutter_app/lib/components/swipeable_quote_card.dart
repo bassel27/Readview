@@ -2,35 +2,11 @@ import 'package:flutter/material.dart';
 import '../others/constants.dart';
 import 'info_card.dart';
 
-class SwipeableQuoteCard extends StatefulWidget {
+class SwipeableQuoteCard extends StatelessWidget {
   final quote;
   final author;
   final title;
   SwipeableQuoteCard(this.title, this.author, this.quote);
-
-  @override
-  State<SwipeableQuoteCard> createState() => _SwipeableQuoteCardState();
-}
-
-class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
-    with SingleTickerProviderStateMixin {
-  // late AnimationController controller;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   controller = AnimationController(
-  //       duration: Duration(seconds: 2),
-  //       vsync:
-  //           this); // this class acts like a ticker (required in vsync)  // this means reference the object of this class
-  //   controller.forward(); // form 0 to 1 in default
-
-  //   controller.addListener(() {
-  //     setState(() {});
-  //     // print(controller.value);
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,8 +22,6 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
           ),
         ],
       ),
-
-      // height: controller.value * 1000,
       child: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -56,7 +30,7 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
               child: Center(
                 child: SingleChildScrollView(
                   child: Text(
-                    widget.quote,
+                    quote,
                     style: kQuoteTextStyle,
                   ),
                 ),
@@ -64,7 +38,7 @@ class _SwipeableQuoteCardState extends State<SwipeableQuoteCard>
             ),
             Align(
                 alignment: Alignment.centerRight,
-                child: InfoCard(widget.title, widget.author))
+                child: InfoCard(title, author))
           ],
         ),
       ),

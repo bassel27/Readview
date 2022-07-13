@@ -2,7 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:readview_app/screens/daily_review_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import '/components/book.dart';
+import '../models/book.dart';
 import '/others/globals.dart';
 import '/others/constants.dart';
 
