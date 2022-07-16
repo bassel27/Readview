@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "2803588697",
+    "project_id": "readview-5cad2",
+    "storage_bucket": "readview-5cad2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2803588697:android:27e2b46a333d6a7d0e5b48",
+        "android_client_info": {
+          "package_name": "com.example.readview_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2803588697-v2fbdcaclffe8f7u7dohl4jt2igq5b8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.readview_app",
+            "certificate_hash": "9ee42cd56cdeee3c41bc2a289794d6032e7d2096"
+          }
+        },
+        {
+          "client_id": "2803588697-b98uknua5uh3b1vuoun7ul0lt2a2fr5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTKaEEZnpVSncn4FNTeRpnd-8lvtsxWiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2803588697-b98uknua5uh3b1vuoun7ul0lt2a2fr5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

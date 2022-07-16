@@ -1,0 +1,35 @@
+name: readview_app
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  provider: ^6.0.2    # this ^ means that you wanna grab this package even if it updates (only the two inner digits. If the outer digit chagnes, it's not gonna update so as not to break your code)
+  flutter_tts: ^3.3.3
+  swipable_stack: ^1.3.0
+  sprung: ^3.0.0
+  swipe_cards: ^1.0.0
+  flutter_swipable: ^1.2.1
+  swipeable_card_stack: ^0.0.5
+  animated_splash_screen: ^1.3.0
+  lottie: ^1.3.0
+  google_fonts: ^3.0.1
+  flutter_tindercard: ^0.2.0
+  appinio_swiper: ^1.0.3
+
+dev_dependencies:
+  dart_code_metrics: ^4.15.0
+  flutter_test:
+    sdk: flutter
+  http:
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/   # the forward slash includes everything inside the assets directory

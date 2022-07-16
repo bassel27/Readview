@@ -5,22 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_app",
-            "cwd": "flutter_app",
+            "name": "readview_app",
             "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart"
+            "type": "dart"
         },
         {
-            "name": "flutter_app (profile mode)",
-            "cwd": "flutter_app",
+            "name": "readview_app (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "flutter_app (release mode)",
-            "cwd": "flutter_app",
+            "name": "readview_app (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
