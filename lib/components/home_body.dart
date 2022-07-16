@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:readview_app/screens/browse_books_screen.dart';
 import 'package:readview_app/screens/loading_screen.dart';
+import 'package:readview_app/screens/loading_screen_2.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
 
-class HomeBody extends StatefulWidget {
+class HomeBody extends StatefulWidget { //TODO: widget for homebody?
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
@@ -75,7 +76,7 @@ class _HomeBodyState extends State<HomeBody> {
             green: green -= KSubtractAmount),
         HomeButton(
             text: "Browse by Book",
-            route: BrowseBooksScreen.route,
+            route: LoadingScreen2.route,
             icon: Icons.book,
             red: red -= KSubtractAmount,
             green: green -= KSubtractAmount),

@@ -20,7 +20,7 @@ class DailyReview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               quoteCardsstack,
-              bottomButtonsRow(quoteCardsstack),
+              BottomButtonsRow(quoteCardsstack),
             ],
           ),
         ),

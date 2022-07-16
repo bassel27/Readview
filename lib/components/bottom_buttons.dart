@@ -3,9 +3,9 @@ import '../services/tts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class bottomButtonsRow extends StatelessWidget {
+class BottomButtonsRow extends StatelessWidget {
   final quoteCardsStackInstance;
-  bottomButtonsRow(this.quoteCardsStackInstance);
+  BottomButtonsRow(this.quoteCardsStackInstance);
 
   @override
   Widget build(BuildContext context) {
