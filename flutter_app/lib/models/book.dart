@@ -10,6 +10,7 @@ class Book {
   Book({required this.title, required this.author, required this.quotes});
 
   static Future<List<Book>> getBooks() async {
+    // TODO: handle error
     http.Response response =
         await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
 

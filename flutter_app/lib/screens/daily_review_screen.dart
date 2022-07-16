@@ -5,16 +5,9 @@ import '../others/constants.dart';
 import '../components/quote_cards_stack.dart';
 import '/services/tts.dart';
 
-class DailyReview extends StatefulWidget {
-  static const route = '/loadingScreen/dailyReview';
-
-  @override
-  State<DailyReview> createState() => _DailyReviewState();
-}
-
-class _DailyReviewState extends State<DailyReview> {
+class DailyReview extends StatelessWidget {
   final quoteCardsstack = QuoteCardsStack();
-
+  static const route = '/loadingScreen/dailyReview';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

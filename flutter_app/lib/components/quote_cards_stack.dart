@@ -10,21 +10,21 @@ import 'package:provider/provider.dart';
 // Note that this package removes last element form the array with each swipe
 
 class QuoteCardsStack extends StatelessWidget {
-  late List<SwipeableQuoteCard> swipeableCards = [];
+  static late List<SwipeableQuoteCard> _swipeableCards = [];
 
   QuoteCardsStack() {
     for (Book book in books) {
       for (String quote in book.quotes) {
-        swipeableCards.add(
+        _swipeableCards.add(
           SwipeableQuoteCard(book.title, book.author, quote),
         );
       }
     }
-    swipeableCards.shuffle();
+    _swipeableCards.shuffle();
   }
 
   String getCurrentQuote() {
-    return swipeableCards[swipeableCards.length - 1].quote;
+    return _swipeableCards[_swipeableCards.length - 1].quote;
   }
   //   with SingleTickerProviderStateMixin {
   // late AnimationController controller;
@@ -46,12 +46,12 @@ class QuoteCardsStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(swipeableCards.length);
+    print(_swipeableCards.length);
     return Expanded(
       child: AppinioSwiper(
-        maxAngle: 60,
-        padding: EdgeInsets.fromLTRB(6, 6, 6, 15 ),
-        cards: swipeableCards,
+        maxAngle: 45,
+        padding: EdgeInsets.fromLTRB(6, 6, 6, 15),
+        cards: _swipeableCards,
         duration: Duration(milliseconds: 150),
         onSwipe: (index) {
           Provider.of<TTS>(context, listen: false).stop(); //TODO: await??
