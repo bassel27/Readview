@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:readview_app/screens/daily_review_screen.dart';
+import 'package:readview_app/screens/review_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:readview_app/services/network_helper.dart';
@@ -16,7 +16,7 @@ class LoadingScreen extends StatelessWidget {
       screenFunction: () async {
         books = await NetworkHelper().getBooks();
         // Navigator.pushNamed(context, DailyReview.route);
-        return DailyReview();
+        return Review();
       },
       backgroundColor: kLoadingScreenColor,
       splashIconSize: 250,

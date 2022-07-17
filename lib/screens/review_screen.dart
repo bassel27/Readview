@@ -5,7 +5,7 @@ import '../others/constants.dart';
 import '../components/quote_cards_stack.dart';
 import '/services/tts.dart';
 
-class DailyReview extends StatelessWidget {
+class Review extends StatelessWidget {
   final quoteCardsstack = QuoteCardsStack();
   static const route = '/loadingScreen/dailyReview';
   @override
