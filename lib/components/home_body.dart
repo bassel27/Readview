@@ -4,6 +4,13 @@ import 'package:readview_app/screens/loading_screen.dart';
 import 'package:readview_app/screens/loading_screen_2.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:readview_app/screens/review_screen.dart';
+import 'package:lottie/lottie.dart';
+import 'package:flutter/material.dart';
+import 'package:readview_app/services/network_helper.dart';
+import '/models/book.dart';
+import '/others/constants.dart';
 
 class HomeBody extends StatefulWidget {
   //TODO: widget for homebody?
@@ -54,6 +61,11 @@ class _HomeBodyState extends State<HomeBody> {
         HomeButton(
             text: "Daily Review",
             route: LoadingScreen.route,
+            loadingScreenFunction: () async {
+              List<Book> books = await NetworkHelper().getBooks();
+              // Navigator.pushNamed(context, DailyReview.route);
+              return ReviewScreen(books);
+            },
             icon: Icons.calendar_month,
             red: red -= KHomeButtonSubtractAmount,
             green: green -= KHomeButtonSubtractAmount),
@@ -77,7 +89,10 @@ class _HomeBodyState extends State<HomeBody> {
             green: green -= KHomeButtonSubtractAmount),
         HomeButton(
             text: "Browse by Book",
-            route: LoadingScreen2.route,
+            route: LoadingScreen.route,
+            loadingScreenFunction: () async {
+              return BrowseBooksScreen(await NetworkHelper().getTitles());
+            },
             icon: Icons.book,
             red: red -= KHomeButtonSubtractAmount,
             green: green -= KHomeButtonSubtractAmount),
