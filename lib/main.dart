@@ -18,7 +18,7 @@ void main() {
         DailyReview.route: (context) => DailyReview(),
         LoadingScreen.route: (context) => LoadingScreen(),
         LoadingScreen2.route: (context) => LoadingScreen2(),
-        BrowseBooksScreen.route: (context) => BrowseBooksScreen(),
+        // BrowseBooksScreen.route: (context) => BrowseBooksScreen(),
       },
     ),
   );

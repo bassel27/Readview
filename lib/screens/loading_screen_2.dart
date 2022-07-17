@@ -15,8 +15,7 @@ class LoadingScreen2 extends StatelessWidget {
     return AnimatedSplashScreen.withScreenFunction(
       splash: Lottie.asset('assets/23707-book-animation-for-loader.json'),
       screenFunction: () async {
-        titles = await NetworkHelper().getTitles();
-        return BrowseBooksScreen();
+        return BrowseBooksScreen(await NetworkHelper().getTitles());
       },
       backgroundColor: kLoadingScreenColor,
       splashIconSize: 250,

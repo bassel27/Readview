@@ -5,7 +5,8 @@ import 'package:readview_app/screens/loading_screen_2.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
 
-class HomeBody extends StatefulWidget { //TODO: widget for homebody?
+class HomeBody extends StatefulWidget {
+  //TODO: widget for homebody?
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
@@ -54,32 +55,32 @@ class _HomeBodyState extends State<HomeBody> {
             text: "Daily Review",
             route: LoadingScreen.route,
             icon: Icons.calendar_month,
-            red: red -= KSubtractAmount,
-            green: green -= KSubtractAmount),
+            red: red -= KHomeButtonSubtractAmount,
+            green: green -= KHomeButtonSubtractAmount),
         HomeButton(
             text: "Update Quotes",
             route: '',
             icon: Icons.update,
-            red: red -= KSubtractAmount,
-            green: green -= KSubtractAmount),
+            red: red -= KHomeButtonSubtractAmount,
+            green: green -= KHomeButtonSubtractAmount),
         HomeButton(
             text: "Favorites",
             route: '',
             icon: Icons.favorite,
-            red: red -= KSubtractAmount,
-            green: green -= KSubtractAmount),
+            red: red -= KHomeButtonSubtractAmount,
+            green: green -= KHomeButtonSubtractAmount),
         HomeButton(
-            text: "Browse by Theme",
+            text: "Browse by Author",
             route: '',
-            icon: Icons.theater_comedy,
-            red: red -= KSubtractAmount,
-            green: green -= KSubtractAmount),
+            icon: Icons.book,
+            red: red -= KHomeButtonSubtractAmount,
+            green: green -= KHomeButtonSubtractAmount),
         HomeButton(
             text: "Browse by Book",
             route: LoadingScreen2.route,
             icon: Icons.book,
-            red: red -= KSubtractAmount,
-            green: green -= KSubtractAmount),
+            red: red -= KHomeButtonSubtractAmount,
+            green: green -= KHomeButtonSubtractAmount),
       ]),
     );
   }
