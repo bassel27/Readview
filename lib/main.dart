@@ -11,15 +11,15 @@ void main() {
   runApp(
     MaterialApp(
       initialRoute: HomeScreen.route,
-      // onGenerateRoute: RouteGenerator.generateRoute,
-      routes: {
-        HomeScreen.route: (context) =>
-            HomeScreen(), // context: find a widget in the OVERALL widget tree
-        DailyReview.route: (context) => DailyReview(),
-        LoadingScreen.route: (context) => LoadingScreen(),
-        LoadingScreen2.route: (context) => LoadingScreen2(),
-        // BrowseBooksScreen.route: (context) => BrowseBooksScreen(),
-      },
+      onGenerateRoute: RouteGenerator.generateRoute,
+      // routes: {
+      //   HomeScreen.route: (context) =>
+      //       HomeScreen(), // context: find a widget in the OVERALL widget tree
+      //   DailyReview.route: (context) => DailyReview(),
+      //   LoadingScreen.route: (context) => LoadingScreen(),
+      //   LoadingScreen2.route: (context) => LoadingScreen2(),
+      // BrowseBooksScreen.route: (context) => BrowseBooksScreen(),
+      // },
     ),
   );
 }
