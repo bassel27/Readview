@@ -3,7 +3,7 @@ import 'package:readview_app/screens/review_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:readview_app/services/network_helper.dart';
-import '/others/globals.dart';
+import '/models/book.dart';
 import '/others/constants.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -14,9 +14,9 @@ class LoadingScreen extends StatelessWidget {
     return AnimatedSplashScreen.withScreenFunction(
       splash: Lottie.asset('assets/23707-book-animation-for-loader.json'),
       screenFunction: () async {
-        books = await NetworkHelper().getBooks();
+        List<Book> books = await NetworkHelper().getBooks();
         // Navigator.pushNamed(context, DailyReview.route);
-        return Review();
+        return ReviewScreen(books);
       },
       backgroundColor: kLoadingScreenColor,
       splashIconSize: 250,

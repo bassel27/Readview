@@ -15,7 +15,7 @@ void main() {
       routes: {
         HomeScreen.route: (context) =>
             HomeScreen(), // context: find a widget in the OVERALL widget tree
-        Review.route: (context) => Review(),
+        // ReviewScreen.route: (context) => ReviewScreen(),
         LoadingScreen.route: (context) => LoadingScreen(),
         LoadingScreen2.route: (context) => LoadingScreen2(),
         // BrowseBooksScreen.route: (context) => BrowseBooksScreen(),

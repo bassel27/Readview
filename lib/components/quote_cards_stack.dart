@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readview_app/components/swipeable_quote_card.dart';
 import '../models/book.dart';
-import '/others/globals.dart';
 import 'swipeable_quote_card.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,8 +10,9 @@ import 'package:provider/provider.dart';
 
 class QuoteCardsStack extends StatelessWidget {
   static late List<SwipeableQuoteCard> _swipeableCards = [];
+  final List<Book> books;
 
-  QuoteCardsStack() {
+  QuoteCardsStack(this.books) {
     for (Book book in books) {
       for (String quote in book.quotes) {
         _swipeableCards.add(
