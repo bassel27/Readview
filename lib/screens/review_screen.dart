@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/books_controller.dart';
 import '/components/bottom_buttons.dart';
 import '../others/constants.dart';
 import '../components/quote_cards_stack.dart';
 import '/services/tts.dart';
 import '/models/book.dart';
 import '/others/globals.dart';
+import 'package:provider/provider.dart';
 
 class ReviewScreen extends StatelessWidget {
   static const route = '/home_screen/daily_review';
-  final List<Book> books = booksGlobal;
+
   // ReviewScreen(this.books);
 
   @override
   Widget build(BuildContext context) {
-    final quoteCardsstack = QuoteCardsStack(this.books); // TODO: use provider?
+    List<Book> books =
+        Provider.of<BooksController>(context, listen: false).books;
+    final quoteCardsstack = QuoteCardsStack(books); // TODO: use provider?
     return Scaffold(
       backgroundColor: kScaffoldColor,
       body: SafeArea(
