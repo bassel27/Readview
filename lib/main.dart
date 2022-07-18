@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:readview_app/screens/loading_screen.dart';
-import 'screens/home_screen.dart';
-import '/services/route_generator.dart';
 import 'package:readview_app/models/books_controller.dart';
+import 'package:readview_app/screens/loading_screen.dart';
+
+import '/services/route_generator.dart';
 
 void main() {
   runApp(

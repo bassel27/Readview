@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/books_controller.dart';
+
 import '/components/bottom_buttons.dart';
-import '../others/constants.dart';
-import '../components/quote_cards_stack.dart';
-import '/services/tts.dart';
 import '/models/book.dart';
-import '/others/globals.dart';
-import 'package:provider/provider.dart';
+import '/services/tts.dart';
+import '../components/quote_cards_stack.dart';
+import '../models/books_controller.dart';
+import '../others/constants.dart';
 
 class ReviewScreen extends StatelessWidget {
   static const route = '/home_screen/daily_review';

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:readview_app/screens/browse_books_screen.dart';
-import 'package:readview_app/screens/loading_screen.dart';
+import 'package:readview_app/screens/review_screen.dart';
+
+import '/others/constants.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
-import 'package:readview_app/screens/review_screen.dart';
-import '/models/book.dart';
-import '/others/constants.dart';
 
 class HomeBody extends StatefulWidget {
   //TODO: widget for homebody?
