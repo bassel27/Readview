@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:readview_app/components/browse_button.dart';
 import '/others/constants.dart';
 import '/models/books_controller.dart';
+import 'package:provider/provider.dart';
+import 'package:readview_app/models/books_controller.dart';
 
 class BrowseBooksScreen extends StatefulWidget {
   static const route = '/home_screen/browseByBook';
-  final List<String> titles = BooksController().getTitles();
   // final List<ListTile> booksTiles;
   // BrowseBooksScreen(this.booksTiles);
 
@@ -18,7 +19,8 @@ class _BrowseBooksScreenState extends State<BrowseBooksScreen> {
     int red = kInitialRedValue;
     int green = kInitialGreenValue;
     List<BrowseButton> list = [];
-    for (String title in widget.titles) {
+    for (String title
+        in Provider.of<BooksController>(context, listen: false).getTitles()) {
       list.add(BrowseButton(
           text: title,
           red: red -= kBrowseButtonSubtractAmount,
