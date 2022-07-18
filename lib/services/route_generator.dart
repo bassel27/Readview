@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:readview_app/screens/browse_books_screen.dart';
 import 'package:readview_app/screens/review_screen.dart';
 import '/screens/home_screen.dart';
 import '/screens/loading_screen.dart';
-import '/screens/browse_books_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,21 +13,17 @@ class RouteGenerator {
       case HomeScreen.route:
         page = HomeScreen();
         break;
-      // case ReviewScreen.route:
-      //   page = ReviewScreen(args);
-      //   break;
       case LoadingScreen.route:
-        page = LoadingScreen(args);
+        page = LoadingScreen();
         break;
-      // case BrowseBooksScreen.route:
-      //   if (args is List<String>) {
-      //     page = BrowseBooksScreen(args);
-      //   } else {
-      //     return _errorRoute();
-      //   }
-      //   break;
-      // default: // If there is no such named route in the switch statement
-      //   return _errorRoute();
+      case ReviewScreen.route:
+        page = ReviewScreen();
+        break;
+      case BrowseBooksScreen.route:
+        page = BrowseBooksScreen();
+        break;
+      default:
+        return _errorRoute();
     }
     return MaterialPageRoute(builder: (_) => page);
   }

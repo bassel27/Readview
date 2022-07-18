@@ -8,11 +8,11 @@ class HomeButton extends StatelessWidget {
   final route;
   final red;
   final green;
-  final loadingScreenFunction;
+  
   HomeButton(
       {this.text,
       this.route,
-      this.loadingScreenFunction,
+      
       this.icon,
       this.red,
       this.green});
@@ -23,7 +23,7 @@ class HomeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context,
-              this.route, arguments: this.loadingScreenFunction); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
+              this.route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
         },
         child: ListTile(
           // adds padding and space between icon and text// this is what makes the expanding effect of the button

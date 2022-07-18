@@ -32,4 +32,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/   # the forward slash includes everything inside the assets directory
+    - assets/images/   # the forward slash includes everything inside the assets directory
+    - assets/icons/
+    - assets/GIFs/

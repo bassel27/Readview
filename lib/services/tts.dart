@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+// TODO: on page channged (back)
 // TODO: arabic tts not working on phone but working on emulator
+
 enum TtsState { playing, stopped, paused, continued }
 FlutterTts flutterTts = FlutterTts();
 

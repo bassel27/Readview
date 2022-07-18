@@ -5,11 +5,12 @@ import '../others/constants.dart';
 import '../components/quote_cards_stack.dart';
 import '/services/tts.dart';
 import '/models/book.dart';
+import '/others/globals.dart';
 
 class ReviewScreen extends StatelessWidget {
-  static const route = '/loadingScreen/dailyReview';
-  final List<Book> books;
-  ReviewScreen(this.books);
+  static const route = '/home_screen/daily_review';
+  final List<Book> books = booksGlobal;
+  // ReviewScreen(this.books);
 
   @override
   Widget build(BuildContext context) {
