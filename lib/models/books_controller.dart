@@ -1,5 +1,4 @@
 import 'package:readview_app/models/book.dart';
-import 'package:readview_app/others/globals.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -13,7 +12,12 @@ class BooksController {
     return _books;
   }
 
-  Future<List<Book>> fetchBooksFromAPI() async {
+  List<String> get titles {
+    // TODO: unmodifiable list view
+    return _titles;
+  }
+
+  Future<void> fetchBooksFromAPI() async {
     // TODO: handle error
     http.Response response =
         await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
@@ -43,13 +47,12 @@ class BooksController {
         quotes = [];
       }
     }
-    return _books;
   }
 
-  List<String> getTitles() {
+  List<String> writeTitles() {
     for (Book book in _books) {
-      titles.add(book.title);
+      _titles.add(book.title);
     }
-    return titles;
+    return _titles;
   }
 }
