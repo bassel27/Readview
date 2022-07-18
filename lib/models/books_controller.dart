@@ -12,10 +12,15 @@ class BooksController {
     return _books;
   }
 
-  List<String> get titles {
-    // TODO: unmodifiable list view
-    return _titles;
-  }
+  // List<String> get titles {
+  //   //TODO: why not working?
+  //   // TODO: unmodifiable list view
+
+  //   if (titles.isEmpty) {
+  //     getTitles();
+  //   }
+  //   return _titles;
+  // }
 
   Future<void> fetchBooksFromAPI() async {
     // TODO: handle error
@@ -49,9 +54,13 @@ class BooksController {
     }
   }
 
-  List<String> writeTitles() {
+  List<String> getTitles() {
+    _titles = [];
     for (Book book in _books) {
       _titles.add(book.title);
+    }
+    for (var title in _titles) {
+      print(_books.length);
     }
     return _titles;
   }

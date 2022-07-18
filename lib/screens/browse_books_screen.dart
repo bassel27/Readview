@@ -20,7 +20,7 @@ class _BrowseBooksScreenState extends State<BrowseBooksScreen> {
     int green = kInitialGreenValue;
     List<BrowseButton> list = [];
     for (String title
-        in Provider.of<BooksController>(context, listen: false).writeTitles()) {
+        in Provider.of<BooksController>(context, listen: false).getTitles()) {
       list.add(BrowseButton(
           text: title,
           red: red -= kBrowseButtonSubtractAmount,
