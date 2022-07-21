@@ -64,4 +64,14 @@ class BooksController {
     }
     return _titles;
   }
+
+  Book getBooksByTitle(String title) {
+    for (Book book in _books) {
+      if (book.title == title) {
+        return book;
+      }
+    }
+    //TODO: remove this line
+    return books[2];
+  }
 }

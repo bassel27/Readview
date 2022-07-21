@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:readview_app/screens/review_screen.dart';
 import '../others/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:readview_app/models/books_controller.dart';
 
 class BrowseButton extends StatelessWidget {
   final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
@@ -18,6 +20,9 @@ class BrowseButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: () {
+          print(Provider.of<BooksController>(context, listen: false)
+              .getBooksByTitle(this.text)
+              .quotes);
           Navigator.pushNamed(
               context,
               ReviewScreen
