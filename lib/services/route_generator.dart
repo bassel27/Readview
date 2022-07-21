@@ -25,8 +25,8 @@ class RouteGenerator {
         }
 
         break;
-      case BrowseBooksScreen.route:
-        page = BrowseBooksScreen();
+      case BrowseScreen.route:
+        page = BrowseScreen(args);
         break;
       default:
         return _errorRoute();

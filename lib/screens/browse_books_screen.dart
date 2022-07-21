@@ -5,28 +5,21 @@ import '/models/books_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:readview_app/models/books_controller.dart';
 
-class BrowseBooksScreen extends StatefulWidget {
+class BrowseScreen extends StatelessWidget {
   static const route = '/home_screen/browseByBook';
-  // final List<ListTile> booksTiles;
-  // BrowseBooksScreen(this.booksTiles);
-
-  @override
-  State<BrowseBooksScreen> createState() => _BrowseBooksScreenState();
-}
-
-class _BrowseBooksScreenState extends State<BrowseBooksScreen> {
+  final titlesOrAuthors;
+  BrowseScreen(this.titlesOrAuthors);
   List<BrowseButton> getBrowseButtonsList() {
     int red = kInitialRedValue;
     int green = kInitialGreenValue;
-    List<BrowseButton> list = [];
-    for (String title
-        in Provider.of<BooksController>(context, listen: false).getTitles()) {
-      list.add(BrowseButton(
+    List<BrowseButton> browseButtonsList = [];
+    for (String title in this.titlesOrAuthors) {
+      browseButtonsList.add(BrowseButton(
           text: title,
           red: red -= kBrowseButtonSubtractAmount,
           green: green -= kBrowseButtonSubtractAmount));
     }
-    return list;
+    return browseButtonsList;
   }
 
   @override

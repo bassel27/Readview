@@ -35,3 +35,4 @@ flutter:
     - assets/images/   # the forward slash includes everything inside the assets directory
     - assets/icons/
     - assets/GIFs/
+    - assets/

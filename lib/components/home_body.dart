@@ -62,11 +62,24 @@ class _HomeBodyState extends State<HomeBody> {
           args: Provider.of<BooksController>(context, listen: false).books,
         ),
         HomeButton(
-            text: "Update Quotes",
-            route: '',
-            icon: Icons.update,
-            red: red -= KHomeButtonSubtractAmount,
-            green: green -= KHomeButtonSubtractAmount),
+          // TODO: change icon
+          text: "Titles",
+          route: BrowseScreen.route,
+          icon: Icons.chrome_reader_mode,
+          red: red -= KHomeButtonSubtractAmount,
+          green: green -= KHomeButtonSubtractAmount,
+          args:
+              Provider.of<BooksController>(context, listen: false).getTitles(),
+        ),
+        HomeButton(
+          text: "Authors",
+          route: BrowseScreen.route,
+          icon: Icons.book,
+          red: red -= KHomeButtonSubtractAmount,
+          green: green -= KHomeButtonSubtractAmount,
+          args:
+              Provider.of<BooksController>(context, listen: false).getAuthors(),
+        ),
         HomeButton(
             text: "Favorites",
             route: '',
@@ -74,15 +87,9 @@ class _HomeBodyState extends State<HomeBody> {
             red: red -= KHomeButtonSubtractAmount,
             green: green -= KHomeButtonSubtractAmount),
         HomeButton(
-            text: "Browse by Author",
+            text: "Update Quotes",
             route: '',
-            icon: Icons.chrome_reader_mode,
-            red: red -= KHomeButtonSubtractAmount,
-            green: green -= KHomeButtonSubtractAmount),
-        HomeButton(
-            text: "Browse by Book",
-            route: BrowseBooksScreen.route,
-            icon: Icons.book,
+            icon: Icons.update,
             red: red -= KHomeButtonSubtractAmount,
             green: green -= KHomeButtonSubtractAmount),
       ]),

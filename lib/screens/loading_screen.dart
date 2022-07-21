@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:readview_app/models/books_controller.dart';
 import 'package:readview_app/screens/home_screen.dart';
-
 import '/others/constants.dart';
 
 class LoadingScreen extends StatelessWidget {

@@ -49,6 +49,7 @@ class QuoteCardsStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: AppinioSwiper(
+        // TODO: onEnd
         maxAngle: 45,
         padding: EdgeInsets.fromLTRB(6, 6, 6, 15),
         cards: _swipeableCards,

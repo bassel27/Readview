@@ -61,7 +61,13 @@ class BooksController {
     }
     return _titles;
   }
-
+  List<String> getAuthors() {
+    _authors = [];
+    for (Book book in _books) {
+      _authors.add(book.author);
+    }
+    return _authors;
+  }
   List<Book> getBookByTitle(String title) {
     for (Book book in _books) {
       if (book.title == title) {
@@ -72,4 +78,6 @@ class BooksController {
     }
     return [];
   }
+
+
 }
