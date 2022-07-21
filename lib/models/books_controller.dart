@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:readview_app/models/book.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -8,19 +9,22 @@ class BooksController {
   List<String> _titles = [];
 
   List<Book> get books {
-    // TODO: unmodifiable list view
-    return _books;
+    return UnmodifiableListView(_books);
   }
 
-  // List<String> get titles {
-  //   //TODO: why not working?
-  //   // TODO: unmodifiable list view
+  List<String> get authors {
+    if (_authors.isEmpty) {
+      formAuthors();
+    }
+    return UnmodifiableListView(_authors);
+  }
 
-  //   if (titles.isEmpty) {
-  //     getTitles();
-  //   }
-  //   return _titles;
-  // }
+  List<String> get titles {
+    if (_titles.isEmpty) {
+      formTitles();
+    }
+    return UnmodifiableListView(_titles);
+  }
 
   Future<void> fetchBooksFromAPI() async {
     // TODO: handle error
@@ -54,20 +58,20 @@ class BooksController {
     }
   }
 
-  List<String> getTitles() {
+  void formTitles() {
     _titles = [];
     for (Book book in _books) {
       _titles.add(book.title);
     }
-    return _titles;
   }
-  List<String> getAuthors() {
+
+  void formAuthors() {
     _authors = [];
     for (Book book in _books) {
       _authors.add(book.author);
     }
-    return _authors;
   }
+
   List<Book> getBookByTitle(String title) {
     for (Book book in _books) {
       if (book.title == title) {
@@ -80,15 +84,13 @@ class BooksController {
   }
 
   List<Book> getBooksByAuthor(String author) {
-    List<Book> booksByThisAuthor =[];
+    List<Book> booksByThisAuthor = [];
     for (Book book in _books) {
       if (book.author == author) {
         //TODO: one line
-         booksByThisAuthor.add(book);
+        booksByThisAuthor.add(book);
       }
     }
     return booksByThisAuthor;
   }
-
-
 }

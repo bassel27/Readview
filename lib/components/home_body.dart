@@ -68,8 +68,7 @@ class _HomeBodyState extends State<HomeBody> {
           icon: Icons.chrome_reader_mode,
           red: red -= KHomeButtonSubtractAmount,
           green: green -= KHomeButtonSubtractAmount,
-          args:
-              Provider.of<BooksController>(context, listen: false).getTitles(),
+          args: Provider.of<BooksController>(context, listen: false).titles,
         ),
         HomeButton(
           text: "Authors",
@@ -77,8 +76,7 @@ class _HomeBodyState extends State<HomeBody> {
           icon: Icons.book,
           red: red -= KHomeButtonSubtractAmount,
           green: green -= KHomeButtonSubtractAmount,
-          args:
-              Provider.of<BooksController>(context, listen: false).getAuthors(),
+          args: Provider.of<BooksController>(context, listen: false).authors,
         ),
         HomeButton(
             text: "Favorites",
