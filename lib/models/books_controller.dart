@@ -79,5 +79,16 @@ class BooksController {
     return [];
   }
 
+  List<Book> getBooksByAuthor(String author) {
+    List<Book> booksByThisAuthor =[];
+    for (Book book in _books) {
+      if (book.author == author) {
+        //TODO: one line
+         booksByThisAuthor.add(book);
+      }
+    }
+    return booksByThisAuthor;
+  }
+
 
 }

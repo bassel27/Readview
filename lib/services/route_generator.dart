@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:readview_app/screens/browse_books_screen.dart';
+import 'package:readview_app/screens/browse_screen.dart';
 import 'package:readview_app/screens/review_screen.dart';
 import '/screens/home_screen.dart';
 import '/screens/loading_screen.dart';

@@ -8,10 +8,15 @@ class BrowseButton extends StatelessWidget {
   final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
   final red;
   final green;
+
   BrowseButton({this.text, this.red, this.green});
   //TODO: constants
   @override
   Widget build(BuildContext context) {
+    final bookBytitle = Provider.of<BooksController>(context, listen: false)
+        .getBookByTitle(this.text);
+    final booksByAuthor = Provider.of<BooksController>(context, listen: false)
+        .getBooksByAuthor(this.text);
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -21,9 +26,9 @@ class BrowseButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, ReviewScreen.route,
-              arguments: Provider.of<BooksController>(context, listen: false)
-                  .getBookByTitle(this
-                      .text)); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
+              arguments: bookBytitle.isNotEmpty
+                  ? bookBytitle
+                  : booksByAuthor); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
         },
         child: Align(
           alignment: Alignment.centerLeft,

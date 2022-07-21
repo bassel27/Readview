@@ -5,7 +5,6 @@ import '/components/bottom_buttons.dart';
 import '/models/book.dart';
 import '/services/tts.dart';
 import '../components/quote_cards_stack.dart';
-import '../models/books_controller.dart';
 import '../others/constants.dart';
 
 class ReviewScreen extends StatelessWidget {
