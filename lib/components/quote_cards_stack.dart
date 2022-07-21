@@ -9,10 +9,11 @@ import 'package:provider/provider.dart';
 // Note that this package removes last element form the array with each swipe
 
 class QuoteCardsStack extends StatelessWidget {
-  static late List<SwipeableQuoteCard> _swipeableCards = [];
+  static List<SwipeableQuoteCard> _swipeableCards = [];
   final List<Book> books;
 
   QuoteCardsStack(this.books) {
+    _swipeableCards = []; //make the list empty first since it is a static attirbute
     for (Book book in books) {
       for (String quote in book.quotes) {
         _swipeableCards.add(
@@ -46,7 +47,6 @@ class QuoteCardsStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(_swipeableCards.length);
     return Expanded(
       child: AppinioSwiper(
         maxAngle: 45,

@@ -59,9 +59,6 @@ class BooksController {
     for (Book book in _books) {
       _titles.add(book.title);
     }
-    for (var title in _titles) {
-      print(_books.length);
-    }
     return _titles;
   }
 
