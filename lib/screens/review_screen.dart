@@ -10,14 +10,12 @@ import '../others/constants.dart';
 
 class ReviewScreen extends StatelessWidget {
   static const route = '/home_screen/daily_review';
-
-  // ReviewScreen(this.books);
+  final List<Book> books;
+  ReviewScreen(this.books);
 
   @override
   Widget build(BuildContext context) {
-    List<Book> books =
-        Provider.of<BooksController>(context, listen: false).books;
-    final quoteCardsstack = QuoteCardsStack(books); // TODO: use provider?
+    final quoteCardsstack = QuoteCardsStack(this.books); // TODO: use provider?
     return Scaffold(
       backgroundColor: kScaffoldColor,
       body: SafeArea(

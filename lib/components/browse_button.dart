@@ -20,13 +20,10 @@ class BrowseButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: () {
-          print(Provider.of<BooksController>(context, listen: false)
-              .getBooksByTitle(this.text)
-              .quotes);
-          Navigator.pushNamed(
-              context,
-              ReviewScreen
-                  .route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
+          Navigator.pushNamed(context, ReviewScreen.route,
+              arguments: Provider.of<BooksController>(context, listen: false)
+                  .getBookByTitle(this
+                      .text)); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
         },
         child: Align(
           alignment: Alignment.centerLeft,

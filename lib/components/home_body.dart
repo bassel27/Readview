@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:readview_app/screens/browse_books_screen.dart';
 import 'package:readview_app/screens/review_screen.dart';
-
+import '/models/books_controller.dart';
 import '/others/constants.dart';
 import '../others/constants.dart';
 import 'home_button.dart';
+import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
   //TODO: widget for homebody?
@@ -53,11 +54,13 @@ class _HomeBodyState extends State<HomeBody> {
           ),
         ),
         HomeButton(
-            text: "Daily Review",
-            route: ReviewScreen.route,
-            icon: Icons.calendar_month,
-            red: red -= KHomeButtonSubtractAmount,
-            green: green -= KHomeButtonSubtractAmount),
+          text: "Daily Review",
+          route: ReviewScreen.route,
+          icon: Icons.calendar_month,
+          red: red -= KHomeButtonSubtractAmount,
+          green: green -= KHomeButtonSubtractAmount,
+          args: Provider.of<BooksController>(context, listen: false).books,
+        ),
         HomeButton(
             text: "Update Quotes",
             route: '',

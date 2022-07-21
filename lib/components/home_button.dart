@@ -8,22 +8,18 @@ class HomeButton extends StatelessWidget {
   final route;
   final red;
   final green;
-  
-  HomeButton(
-      {this.text,
-      this.route,
-      
-      this.icon,
-      this.red,
-      this.green});
+  final args;
+
+  HomeButton({this.text, this.route, this.icon, this.red, this.green, this.args});
   //TODO: constants
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context,
-              this.route); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
+          Navigator.pushNamed(context, this.route,
+              arguments:
+                  args); //onPressed is a required parameter (due to @required decoratorr) and it takes arguments of type void Callback (anonymous functions which don't have a name) which are functions that have no arguments and return no data
         },
         child: ListTile(
           // adds padding and space between icon and text// this is what makes the expanding effect of the button

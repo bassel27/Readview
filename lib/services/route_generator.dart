@@ -3,6 +3,7 @@ import 'package:readview_app/screens/browse_books_screen.dart';
 import 'package:readview_app/screens/review_screen.dart';
 import '/screens/home_screen.dart';
 import '/screens/loading_screen.dart';
+import '/models/book.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -17,7 +18,12 @@ class RouteGenerator {
         page = LoadingScreen();
         break;
       case ReviewScreen.route:
-        page = ReviewScreen();
+        if (args is List<Book>) {
+          page = ReviewScreen(args);
+        } else {
+          return _errorRoute();
+        }
+
         break;
       case BrowseBooksScreen.route:
         page = BrowseBooksScreen();

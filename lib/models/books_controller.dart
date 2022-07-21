@@ -65,13 +65,14 @@ class BooksController {
     return _titles;
   }
 
-  Book getBooksByTitle(String title) {
+  List<Book> getBookByTitle(String title) {
     for (Book book in _books) {
       if (book.title == title) {
-        return book;
+        //TODO: one line
+        List<Book> tempList = [book];
+        return tempList;
       }
     }
-    //TODO: remove this line
-    return books[2];
+    return [];
   }
 }
