@@ -9,7 +9,7 @@ class HomeButton extends StatelessWidget {
   final String route;
   final int red;
   final int green;
-  final args;
+  dynamic args;
 
   HomeButton(
       {required this.text,

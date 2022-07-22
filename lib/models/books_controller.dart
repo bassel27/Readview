@@ -63,13 +63,17 @@ class BooksController {
     for (Book book in _books) {
       _titles.add(book.title);
     }
+    _titles.sort();
   }
 
   void formAuthors() {
     _authors = [];
     for (Book book in _books) {
-      _authors.add(book.author);
+      if (!_authors.contains(book.author)) {
+        _authors.add(book.author);
+      }
     }
+    _authors.sort();
   }
 
   List<Book> getBookByTitle(String title) {
@@ -87,7 +91,6 @@ class BooksController {
     List<Book> booksByThisAuthor = [];
     for (Book book in _books) {
       if (book.author == author) {
-        //TODO: one line
         booksByThisAuthor.add(book);
       }
     }
