@@ -1,3 +1,4 @@
+import 'package:auto_direction/auto_direction.dart';
 import 'package:flutter/material.dart';
 import '../others/constants.dart';
 import 'info_card.dart';
@@ -29,9 +30,12 @@ class SwipeableQuoteCard extends StatelessWidget {
             Expanded(
               child: Center(
                 child: SingleChildScrollView(
-                  child: Text(
-                    quote,
-                    style: kQuoteTextStyle,
+                  child: AutoDirection(
+                    text: quote,
+                    child: Text(
+                      quote,
+                      style: kQuoteTextStyle,
+                    ),
                   ),
                 ),
               ),

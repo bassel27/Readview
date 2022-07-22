@@ -3,14 +3,21 @@ import '../others/constants.dart';
 
 class HomeButton extends StatelessWidget {
   //TODO: types
-  final text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
-  final icon;
-  final route;
-  final red;
-  final green;
+  final String
+      text; // final is required because this is a stateless widget whcih means that their properties must be set only once and can't be change after. Also, when you wnat to edit a stateless widget, you have to delete it and tehn build it once again
+  final IconData icon;
+  final String route;
+  final int red;
+  final int green;
   final args;
 
-  HomeButton({this.text, this.route, this.icon, this.red, this.green, this.args});
+  HomeButton(
+      {required this.text,
+      required this.route,
+      required this.icon,
+      required this.red,
+      required this.green,
+      this.args});
   //TODO: constants
   @override
   Widget build(BuildContext context) {

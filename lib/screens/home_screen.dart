@@ -8,10 +8,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        drawer: Drawer(
-            child: Container(
-          color: kDrawerColor,
-        )),
         appBar: AppBar(
           toolbarHeight: 100,
           title: Image.asset('assets/images/Readview-logos_white.png'),

@@ -5,7 +5,7 @@ const kIconSize = 30.0;
 const KHomeButtonSubtractAmount = 20;
 const kBrowseButtonSubtractAmount = 10;
 const kScaffoldColor = Color.fromARGB(255, 111, 122, 174);
-const kDrawerColor = Color.fromARGB(81, 14, 37, 244);
+
 const kAppbarColor = Color.fromARGB(255, 68, 75, 105);
 const kCardColor = Color.fromARGB(255, 241, 238, 238);
 const int kInitialRedValue = 170;

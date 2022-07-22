@@ -33,7 +33,7 @@ class BrowseButton extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 17),
+            padding: EdgeInsets.symmetric(vertical: 25, horizontal: 17),
             child: Text(
               this.text,
               style: kBrowseButtonTextStyle,

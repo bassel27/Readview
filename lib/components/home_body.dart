@@ -16,16 +16,6 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   bool isSearchVisisble = false;
 
-  void updateQuotes() {}
-
-  void favorites() {}
-
-  void browseByTheme() {}
-
-  void browseByBook() {}
-
-  void loadingScreen() {}
-
   @override
   Widget build(BuildContext context) {
     int red = kInitialRedValue;
@@ -57,6 +47,7 @@ class _HomeBodyState extends State<HomeBody> {
           text: "Daily Review",
           route: ReviewScreen.route,
           icon: Icons.calendar_month,
+          // TODO: better way to get that color effect?
           red: red -= KHomeButtonSubtractAmount,
           green: green -= KHomeButtonSubtractAmount,
           args: Provider.of<BooksController>(context, listen: false).books,
