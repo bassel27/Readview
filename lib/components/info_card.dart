@@ -20,7 +20,7 @@ class InfoCard extends StatelessWidget {
           )
         ],
       ),
-      margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
+      margin: EdgeInsets.fromLTRB(5, 10, 10, 15),
       child: Padding(
         padding: EdgeInsets.all(5),
         child: Text(
