@@ -1,7 +1,8 @@
 import 'dart:collection';
-import 'package:readview_app/models/book.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
+import 'package:flutter/services.dart';
+import 'package:readview_app/models/book.dart';
 
 class BooksController {
   List<Book> _books = [];
@@ -27,19 +28,21 @@ class BooksController {
   }
 
   Future<void> fetchBooksFromAPI() async {
+    final String response = await rootBundle.loadString('assets/result.json');
+    final decodedDict = await json.decode(response);
     // TODO: handle error
-    http.Response response =
-        await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
+    // http.Response response =
+    //     await http.get(Uri.parse('https://readview-api.herokuapp.com/'));
 
-    var decodedDict = json.decode(Utf8Decoder().convert(response.bodyBytes));
-    print(decodedDict["data"]);
-    List<String> quotes = [];
     for (var book in decodedDict["data"]) {
-      for (var quote_dict in book['quotes']) {
-        quotes.add(quote_dict['quote']);
+      List<String> quotes = [];
+      for (var quoteDict in book['quotes']) {
+        quotes.add(quoteDict['quote']);
       }
-      _books.add(
-          Book(title: book['title'], author: book['author'], quotes: quotes));
+      var mybook =
+          Book(title: book['title'], author: book['author'], quotes: quotes);
+      _books.add(mybook);
+      print(mybook);
     }
   }
 
